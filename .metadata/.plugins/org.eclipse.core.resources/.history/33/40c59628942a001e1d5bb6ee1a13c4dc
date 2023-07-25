@@ -1,0 +1,22 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>03_pageContext</title>
+</head>
+	<body>
+		<h3>03_pageContext</h3>
+		
+		<h4>include</h4>
+		<%
+			pageContext.include("./inc/_header.html");
+			pageContext.include("./inc/_footer.html");			
+		%>
+		
+		<h4>forward</h4>
+		<a herf="./proc/forward1.jsp">포워드 페이지 요청 1</a>
+		<a herf="./proc/forward2.jsp">포워드 페이지 요청 2</a>
+		
+	</body>
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;03_pageContext.jsp&apos; to &apos;Servers&apos;" description="Move &apos;03_pageContext.jsp&apos; to &apos;Servers&apos;" destination="/Servers" element1="/Ch03/src/main/webapp/WEB-INF/03_pageContext.jsp" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1690252087007" updateReferences="true"/>
+</session>
