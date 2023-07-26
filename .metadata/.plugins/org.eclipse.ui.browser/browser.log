@@ -8,3 +8,11 @@
 7월 25, 2023 09:48:03.532 [2964:14088:0725/094803.532:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
 7월 25, 2023 10:22:17.855 [1764:5068:0725/102217.855:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
 7월 25, 2023 10:33:21.853 [1764:5068:0725/103321.853:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+7월 26, 2023 09:48:46.434 NEW SESSION
+7월 26, 2023 09:48:46.434 [8960:10656:0726/094846.433:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+7월 26, 2023 09:49:32.128 [10272:3480:0726/094932.128:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+7월 26, 2023 09:52:27.88 [5400:5140:0726/095227.088:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+7월 26, 2023 09:53:14.473 [11124:11544:0726/095314.473:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+7월 26, 2023 09:55:14.468 [2852:2776:0726/095514.468:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+7월 26, 2023 09:55:35.359 [2852:2776:0726/095535.359:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
