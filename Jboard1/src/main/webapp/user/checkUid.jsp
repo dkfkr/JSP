@@ -16,7 +16,7 @@
 	try{
 		Context initCtx = new InitialContext();
 		Context ctx = (Context) initCtx.lookup("java:comp/env");
-		DataSource ds = (DataSource) ctx.lookup("jdbc/Jboard");
+		DataSource ds = (DataSource) ctx.lookup("jdbc/jboard");
 		
 		Connection conn = ds.getConnection();
 		PreparedStatement psmt = conn.prepareStatement("SELECT COUNT(*) FROM `User` WHERE `uid`=?");
