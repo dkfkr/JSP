@@ -3,7 +3,7 @@ package vo4;
 public class User4Vo {
 	
 	private String name;
-	private String genderValue;
+	private String gender;
 	private String age;
 	private String addr;
 	
@@ -13,6 +13,14 @@ public class User4Vo {
 	
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getGender() {
+		return gender;
+	}
+	
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	
 	public String getAge() {
@@ -26,16 +34,10 @@ public class User4Vo {
 	public String getAddr() {
 		return addr;
 	}
+	
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-
-	public String getGender() {
-		return genderValue;
-	}
-
-	public void setGender(String gender) {
-		this.genderValue = gender;
-	}
+	
 	
 }
