@@ -82,3 +82,25 @@
 8월 03, 2023 15:01:28.757 [6128:6688:0803/150128.757:ERROR:device_event_log_impl.cc(222)] [15:01:28.757] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
 8월 03, 2023 15:05:41.439 [6128:6688:0803/150541.439:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
 8월 03, 2023 15:17:48.300 [6128:6688:0803/151748.300:ERROR:interface_endpoint_client.cc(702)] Message 5 rejected by interface blink.mojom.WidgetHost
+
+8월 04, 2023 09:04:47.848 NEW SESSION
+8월 04, 2023 09:04:47.848 [4148:6304:0804/090447.847:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 04, 2023 09:04:47.864 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 04, 2023 09:15:22.828 [4148:6304:0804/091522.828:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+8월 04, 2023 09:25:28.981 [4148:6304:0804/092528.981:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+8월 04, 2023 09:25:28.981 [4148:6304:0804/092528.981:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+8월 04, 2023 09:41:45.543 [4148:6304:0804/094145.543:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+8월 04, 2023 09:41:45.543 [4148:6304:0804/094145.543:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+8월 04, 2023 10:03:35.54 [4148:6304:0804/100335.054:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+8월 04, 2023 10:03:46.990 [4148:6304:0804/100346.990:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+8월 04, 2023 12:01:57.225 [4148:6304:0804/120157.225:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+8월 04, 2023 15:36:34.533 NEW SESSION
+8월 04, 2023 15:36:34.533 [13184:3596:0804/153634.532:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 
+8월 04, 2023 15:36:34.534 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 04, 2023 15:43:03.928 [13184:3596:0804/154303.928:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+8월 04, 2023 15:43:03.929 [13184:3596:0804/154303.928:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+8월 04, 2023 15:45:35.739 NEW SESSION
+8월 04, 2023 15:45:35.739 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 04, 2023 15:45:35.739 [13044:13072:0804/154535.738:ERROR:feature_processor_state.cc(39)] Processing error occured: model WebAppInstallationPromo failed with UkmEngineDisabled, message: 

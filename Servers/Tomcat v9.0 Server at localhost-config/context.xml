@@ -27,7 +27,7 @@
     <Manager pathname="" />
     -->
     <Resource
-		name="jdbc/jboard"
+		name="jdbc/Jboard"
 		auth="Container"
 		type="javax.sql.DataSource"
 		driverClassName="com.mysql.cj.jdbc.Driver"
