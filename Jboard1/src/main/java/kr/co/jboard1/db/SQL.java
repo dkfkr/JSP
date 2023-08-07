@@ -24,5 +24,12 @@ public class SQL {
 	public static final String SELECT_COUNT_HP    = "SELECT COUNT(*) FROM `User` WHERE `hp`=?";
 	public static final String SELECT_TERMS    = "SELECT * FROM `Terms`";
 	
+	public static final String INSERT_ARTICLE = "INSERT INTO `article` SET "
+											  +"`title`=?,"
+											  +"`content`=?,"
+											  +"`writer`=?,"
+											  +"`regip`=?,"
+											  +"`rdate`=NOW()";
 	
+	public static final String SELECT_ARTICLES = "SELECT * FROM `Article` ORDER BY `no` DESC;";
 }

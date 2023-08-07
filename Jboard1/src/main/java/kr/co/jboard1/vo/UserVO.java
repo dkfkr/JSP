@@ -15,6 +15,9 @@ public class UserVO {
 	private String regip;
 	private String regDate;
 	private String leaveDate;
+	
+	
+	
 	public String getUid() {
 		return uid;
 	}
@@ -92,7 +95,7 @@ public class UserVO {
 	}
 	public void setLeaveDate(String leaveDate) {
 		this.leaveDate = leaveDate;
-	}	
+	}
 	
 	
 	

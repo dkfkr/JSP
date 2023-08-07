@@ -1,21 +1,19 @@
-<%@page import="kr.co.jboard1.vo.UserVO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
         <main>
-            <section class="write">
-                <h3>글쓰기</h3>
+            <section class="delete">
+                <h3>글삭제</h3>
                 <article>
-                    <form action="/Jboard1/proc/writeProc.jsp" method="post">
-                        <input type="hidden" name="writer" readonly value="<%= sessUser.getUid() %>">
+                    <form action="/jboard1/proc/deleteProc.jsp">
                         <table>
                             <tr>
                                 <td>제목</td>
-                                <td><input type="text" name="title" required placeholder="제목을 입력하세요."/></td>
+                                <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
                             </tr>
                             <tr>
                                 <td>내용</td>
                                 <td>
-                                    <textarea name="content" required></textarea>                                
+                                    <textarea name="content"></textarea>                                
                                 </td>
                             </tr>
                             <tr>
@@ -24,8 +22,8 @@
                             </tr>
                         </table>
                         <div>
-                            <a href="/Jboard1/list.jsp" class="btnCancel">취소</a>
-                            <input type="submit"  class="btnWrite" value="작성완료">
+                            <a href="#" class="btnCancel">취소</a>
+                            <input type="submit"  class="btnDelete" value="삭제완료">
                         </div>
                     </form>
                 </article>

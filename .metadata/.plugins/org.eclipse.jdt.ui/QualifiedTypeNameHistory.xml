@@ -18,6 +18,11 @@
     <fullyQualifiedTypeName name="javax.sql.DataSource"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="kr.co.jboard1.db.SQL"/>
-    <fullyQualifiedTypeName name="kr.co.jboard1.db.DBHelper"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="kr.co.jboard1.db.DBHelper"/>
+    <fullyQualifiedTypeName name="kr.co.jboard1.dao.articleDAO"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="kr.co.jboard1.dao.ArticleDAO"/>
+    <fullyQualifiedTypeName name="kr.co.jboard1.vo.ArticleVO"/>
 </qualifiedTypeNameHistroy>
