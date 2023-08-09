@@ -16,13 +16,9 @@
                                     <textarea name="content"></textarea>                                
                                 </td>
                             </tr>
-                            <tr>
-                                <td>첨부</td>
-                                <td><input type="file" name="file"/></td>
-                            </tr>
                         </table>
                         <div>
-                            <a href="#" class="btnCancel">취소</a>
+                            <a href="list.jsp" class="btnCancel">취소</a>
                             <input type="submit"  class="btnWrite" value="수정완료">
                         </div>
                     </form>

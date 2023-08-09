@@ -1,20 +1,21 @@
-<%@page import="kr.co.jboard1.vo.UserVO"%>
+<%@page import="kr.co.jboard1.dto.UserDTO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	UserVO sessUser = (UserVO) session.getAttribute("sessUser");
+	UserDTO sessUser = (UserDTO) session.getAttribute("sessUser");
 
 	if(sessUser == null){
-	response.sendRedirect("/Jboard1/user/login.jsp?success=101");
-	return;
-}
+		response.sendRedirect("/Jboard1/user/login.jsp?success=101");
+		return;
+	}
 %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판</title>
-    <link rel="stylesheet" href="./css/style.css">    
+    <title>Board System v1.0</title>
+    <link rel="stylesheet" href="/Jboard1/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 <body>
     <div id="container">
