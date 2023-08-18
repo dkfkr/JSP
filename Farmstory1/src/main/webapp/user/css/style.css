@@ -8,16 +8,19 @@
     margin: 100px auto;
 }
 
-.login > table {
+.login > form {
+    
+}
+.login table {
     margin-left: 52px;
     margin-top: 30px;
     border-collapse: collapse;
     border-spacing: 0;
 }
-
-.login > table > img {width: 20px;}
-
-.login > table > input {
+.login table tr {}
+.login table tr > td {}
+.login table img {width: 20px;}
+.login table input {
     width: 162px;
     height: 22px;
     margin-left: 6px;
@@ -26,7 +29,7 @@
     background-color: #f7f7f7;
 }
 
-.login > .btnLogin {
+.login .btnLogin {
     position: absolute;
     right: 50px;
     top: 30px;
