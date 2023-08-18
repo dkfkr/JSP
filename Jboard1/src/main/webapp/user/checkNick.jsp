@@ -12,7 +12,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String nick = request.getParameter("nick");
 	
-	// 사용자 DB 조회
+	// DB 조회
 	int result = UserDAO.getInstance().selectCountNick(nick);
 	
 	// Json 생성

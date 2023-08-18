@@ -14,10 +14,52 @@
 	
 	// 댓글 조회
 	List<ArticleDTO> comments = dao.selectComments(no);
-
 %>
 <script>
 	$(function(){
+		
+		// 댓글 수정
+		$('.mod').click(function(e){
+			e.preventDefault();
+			
+			const txt = $(this).text();
+			
+			if(txt == '수정'){
+				// 수정모드 전환
+				$(this).parent().prev().addClass('modi');
+				$(this).parent().prev().attr('readonly', false);
+				$(this).parent().prev().focus();
+				$(this).text('수정완료');
+				$(this).prev().show();
+			}else{
+				// '수정완료' 클릭
+				if(confirm('정말 수정 하시겠습니까?')){
+					// 수정 데이터 전송
+					$(this).closest('form').submit();
+				}
+				
+				// 수정모드 해제 
+				$(this).parent().prev().removeClass('modi');
+				$(this).parent().prev().attr('readonly', true);
+				$(this).text('수정');
+				$(this).prev().hide();
+			}
+		});
+		
+		// 댓글 수정 취소
+		/*
+		$('.can').click(function(e){
+			e.preventDefault();
+			
+			// 수정모드 해제 
+			$(this).parent().prev().removeClass('modi');
+			$(this).parent().prev().attr('readonly', true);			
+			$(this).hide();
+			$(this).next().text('수정');
+		});
+		*/
+		
+		// 댓글 삭제
 		$('.del').click(function(){
 			const result = confirm('정말 삭제 하시겠습니까?');
 			
@@ -27,6 +69,31 @@
 				return false;					
 			}
 		});
+		
+		// 댓글쓰기 취소
+		// Javascript 방식
+		const commentContent = document.querySelector('form > textarea[name=content]');
+		const btnCancel = document.querySelector('.btnCancel');
+		btnCancel.onclick = function(e){
+			e.preventDefault();
+			commentContent.value = '';
+		}
+		
+		// jQuery 방식
+		$('.btnCancel').click(function(e){
+			e.preventDefault();
+			$('form > textarea[name=content]').val('');
+		});
+		
+		// 원글 삭제
+		const btnDelete = document.getElementsByClassName('btnDelete')[0];
+		btnDelete.onclick = function(){
+			if(confirm('정말 삭제 하시겠습니까?')){
+				return true;
+			}else{
+				return false;					
+			}
+		}
 	});
 	
 </script>
@@ -55,29 +122,35 @@
             </tr>
         </table>
         <div>
-            <a href="/Jboard1/proc/articleDelete.jsp?no=<%= no %>" class="btnDelete">삭제</a>
-            <a href="/Jboard1/modify.jsp?<%= no %>" class="btnModify">수정</a>
+        	<% if(sessUser.getUid().equals(dto.getWriter())){ %>
+            <a href="/Jboard1/delete.jsp?no=<%= no %>" class="btnDelete">삭제</a>
+            <a href="/Jboard1/modify.jsp?no=<%= no %>" class="btnModify">수정</a>
+            <% } %>
             <a href="/Jboard1/list.jsp" class="btnList">목록</a>
-        </div>  
+        </div>
         
         <!-- 댓글리스트 -->
         <section class="commentList">
             <h3>댓글목록</h3>
             <% for(ArticleDTO comment : comments){ %>
             <article class="comment">
-                <span>
-                    <span><%= comment.getNick() %></span>
-                    <span><%= comment.getRdate() %></span>
-                </span>
-                <textarea name="comment" readonly><%= comment.getContent() %></textarea>
-                
-                <% if(sessUser.getUid().equals(comment.getWriter())){ %>
-                <div>
-                    <a href="/Jboard1/proc/commentDelete.jsp?no=<%= comment.getNo() %>&parent=<%= comment.getParent() %>" class="del">삭제</a>
-                    <a href="#" class="mod">수정</a>
-                </div>
-                <% } %>
-                
+            	<form action="/Jboard1/proc/commentUpdate.jsp" method="post">
+            		<input type="hidden" name="no"     value="<%= comment.getNo() %>">
+            		<input type="hidden" name="parent" value="<%= comment.getParent() %>">
+	                <span>
+	                    <span><%= comment.getNick() %></span>
+	                    <span><%= comment.getRdate() %></span>
+	                </span>
+	                <textarea name="comment" readonly><%= comment.getContent() %></textarea>
+	                
+	                <% if(sessUser.getUid().equals(comment.getWriter())){ %>
+	                <div>
+	                    <a href="/Jboard1/proc/commentDelete.jsp?no=<%= comment.getNo() %>&parent=<%= comment.getParent() %>" class="del">삭제</a>
+	                    <a href="/Jboard1/view.jsp?no=<%= no %>" class="can">취소</a>
+	                    <a href="#" class="mod">수정</a>
+	                </div>                
+                	<% } %>
+                </form>
             </article>
             <% } %>
             
@@ -89,7 +162,7 @@
         <!-- 댓글입력폼 -->
         <section class="commentForm">
             <h3>댓글쓰기</h3>
-            <form action="/Jboard1/proc/commentProc.jsp" method="post">
+            <form action="/Jboard1/proc/commentInsert.jsp" method="post">
             	<input type="hidden" name="parent" value="<%= no %>"/>
             	<input type="hidden" name="writer" value="<%= sessUser.getUid() %>"/>
                 <textarea name="content"></textarea>

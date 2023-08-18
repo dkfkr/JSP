@@ -12,7 +12,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String email = request.getParameter("email");
 	
-	// 사용자 DB 조회
+	// DB 조회
 	int result = UserDAO.getInstance().selectCountEmail(email);
 	
 	// Json 생성

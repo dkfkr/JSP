@@ -16,8 +16,6 @@ public class UserDTO {
 	private String regDate;
 	private String leaveDate;
 	
-	
-	
 	public String getUid() {
 		return uid;
 	}
@@ -95,7 +93,7 @@ public class UserDTO {
 	}
 	public void setLeaveDate(String leaveDate) {
 		this.leaveDate = leaveDate;
-	}
+	}	
 	
 	
 	

@@ -21,19 +21,19 @@ request.setCharacterEncoding("UTF-8");
 	String addr2 = request.getParameter("addr2");
  	String regip = request.getRemoteAddr();
 
- 	UserDTO vo = new UserDTO();
- 	vo.setUid(uid);
- 	vo.setPass(pass1);
- 	vo.setName(name);
- 	vo.setNick(nick);
- 	vo.setEmail(email);
- 	vo.setHp(hp);
- 	vo.setZip(zip);
- 	vo.setAddr1(addr1);
- 	vo.setAddr2(addr2);
- 	vo.setRegip(regip);
+ 	UserDTO dto = new UserDTO();
+ 	dto.setUid(uid);
+ 	dto.setPass(pass1);
+ 	dto.setName(name);
+ 	dto.setNick(nick);
+ 	dto.setEmail(email);
+ 	dto.setHp(hp);
+ 	dto.setZip(zip);
+ 	dto.setAddr1(addr1);
+ 	dto.setAddr2(addr2);
+ 	dto.setRegip(regip);
  	
-	UserDAO.getInstance().insertUser(vo);
+	UserDAO.getInstance().insertUser(dto);
 	
 	response.sendRedirect("/Jboard1/user/login.jsp");
 %>

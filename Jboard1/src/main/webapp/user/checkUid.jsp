@@ -12,7 +12,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String uid = request.getParameter("uid");
 	
-	// 사용자 DB 조회
+	// DB 조회
 	int result = UserDAO.getInstance().selectCountUid(uid);
 	
 	// Json 생성

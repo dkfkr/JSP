@@ -28,5 +28,12 @@
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="kr.co.jboard1.dto.ArticleDTO"/>
+    <fullyQualifiedTypeName name="javax.swing.text.AbstractDocument.Content"/>
+    <fullyQualifiedTypeName name="kr.co.Farmstory1.dto.UserDTO"/>
+    <fullyQualifiedTypeName name="kr.Farmstory1.dao.ArticleDAO"/>
+    <fullyQualifiedTypeName name="kr.Farmstory1.db.DBHelper"/>
+    <fullyQualifiedTypeName name="kr.Farmstory1.db.SQL"/>
+    <fullyQualifiedTypeName name="org.apache.tomcat.dbcp.dbcp2.PStmtKey"/>
+    <fullyQualifiedTypeName name="kr.Farmstory1.dto.ArticleDTO"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>

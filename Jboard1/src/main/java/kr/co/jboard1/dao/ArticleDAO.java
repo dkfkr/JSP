@@ -1,18 +1,16 @@
 package kr.co.jboard1.dao;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import kr.co.jboard1.db.DBHelper;
 import kr.co.jboard1.db.SQL;
 import kr.co.jboard1.dto.ArticleDTO;
 
-public class ArticleDAO extends DBHelper{
-	
+public class ArticleDAO extends DBHelper {
+
+	// 기본 CRUD
 	public void insertArticle(ArticleDTO dto) {
-		
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.INSERT_ARTICLE);
@@ -22,20 +20,20 @@ public class ArticleDAO extends DBHelper{
 			psmt.setString(4, dto.getRegip());
 			psmt.executeUpdate();
 			close();
-			
-		} catch (Exception e) {
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
 	
 	public ArticleDTO selectArticle(String no) {
 		
-        ArticleDTO dto = null;
+		ArticleDTO dto = null;
 		
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_ARTICLE);
 			psmt.setString(1, no);
+			
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
@@ -51,19 +49,14 @@ public class ArticleDAO extends DBHelper{
 				dto.setWriter(rs.getString("writer"));
 				dto.setRegip(rs.getString("regip"));
 				dto.setRdate(rs.getString("rdate"));
-				
 			}
-			
 			close();
-					
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return dto;
-	
 	}
-
 	
 	public List<ArticleDTO> selectArticles(int start) {
 		
@@ -75,85 +68,58 @@ public class ArticleDAO extends DBHelper{
 			psmt.setInt(1, start);
 			rs = psmt.executeQuery();
 			
-			while (rs.next()) {
-			ArticleDTO dto = new ArticleDTO();
-			dto.setNo(rs.getInt(1));
-			dto.setParent(rs.getInt(2));
-			dto.setComment(rs.getInt(3));
-			dto.setCate(rs.getString(4));
-			dto.setTitle(rs.getString(5));
-			dto.setContent(rs.getString(6));
-			dto.setFile(rs.getInt(7));
-			dto.setHit(rs.getInt(8));
-			dto.setWriter(rs.getString(9));
-			dto.setRegip(rs.getString(10));
-			dto.setRdate(rs.getString(11));
-			dto.setNick(rs.getString(12));
-			
-			articles.add(dto);
-			
+			while(rs.next()) {
+				ArticleDTO dto = new ArticleDTO();
+				dto.setNo(rs.getInt(1));
+				dto.setParent(rs.getInt(2));
+				dto.setComment(rs.getInt(3));
+				dto.setCate(rs.getString(4));
+				dto.setTitle(rs.getString(5));
+				dto.setContent(rs.getString(6));
+				dto.setFile(rs.getInt(7));
+				dto.setHit(rs.getInt(8));
+				dto.setWriter(rs.getString(9));
+				dto.setRegip(rs.getString(10));
+				dto.setRdate(rs.getString(11));
+				dto.setNick(rs.getString(12));
+				
+				articles.add(dto);
 			}
-			
 			close();
-			
-			
-		} catch (Exception e) {
+		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
 		return articles;
-		
 	}
 	
 	public void updateArticle(ArticleDTO dto) {
-		
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getWriter());
-			psmt.setString(4, dto.getRegip());
+			psmt.setInt(3, dto.getNo());
 			psmt.executeUpdate();
 			close();
-			
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void deleteArticle(String no) {
-		
 		try {
-			
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.DELETE_ARTICLE);
 			psmt.setString(1, no);
+			psmt.setString(2, no);
 			psmt.executeUpdate();
 			close();
-			
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public void deleteComment(String no) {
-		
-		
-		try {
-			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.DELETE_COMMENT);
-			psmt.setString(1, no);
-			psmt.executeUpdate();
-			close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		
-	}
-	
+
+	// 추가 
 	public int selectCountTotal() {
 		
 		int total = 0;
@@ -165,14 +131,12 @@ public class ArticleDAO extends DBHelper{
 			if(rs.next()) {
 				total = rs.getInt(1);
 			}
-			close();
-			
-		} catch (Exception e) {
+			close();			
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return total;
-		
 	}
 	
 	public List<ArticleDTO> selectComments(String parent) {
@@ -202,24 +166,18 @@ public class ArticleDAO extends DBHelper{
 				dto.setNick(rs.getString(12));
 				
 				comments.add(dto);
-				
 			}
-		
 			close();
-			
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return comments;
-		
 	}
 	
-	public void insertComment (ArticleDTO dto) {
-		
+	public void insertComment(ArticleDTO dto) {
 		
 		try {
-			
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.INSERT_COMMENT);
 			psmt.setInt(1, dto.getParent());
@@ -228,44 +186,67 @@ public class ArticleDAO extends DBHelper{
 			psmt.setString(4, dto.getRegip());
 			psmt.executeUpdate();
 			close();
-			
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void updateArticleForCommentPlus(String no) {
-		
+	public void updateAticleForCommentPlus(String no) {
 		try {
-			
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE_FOR_COMMENT_PLUS);
 			psmt.setString(1, no);
 			psmt.executeUpdate();
 			close();
-			
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
-	public void updateArticleForCommentMius(String no) {
-		
+	public void updateAticleForCommentMinus(String no) {
 		try {
-			
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE_FOR_COMMENT_MINUS);
 			psmt.setString(1, no);
 			psmt.executeUpdate();
 			close();
-			
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+	}
+
+	public void updateComment(String no, String content) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_COMMENT);
+			psmt.setString(1, content);
+			psmt.setString(2, no);
+			psmt.executeUpdate();
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
-
-	
+	public void deleteComment(String no) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.DELETE_COMMENT);
+			psmt.setString(1, no);
+			psmt.executeUpdate();
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
