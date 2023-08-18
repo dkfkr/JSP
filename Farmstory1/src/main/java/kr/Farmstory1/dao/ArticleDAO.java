@@ -218,6 +218,18 @@ public class ArticleDAO extends DBHelper {
 		}
 	}
 
+	public void hitincrement(String no) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.HIT_INCREMENT);
+			psmt.setString(1, no);
+			psmt.executeUpdate();
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void updateComment(String no, String content) {
 		try {
 			conn = getConnection();
@@ -229,6 +241,36 @@ public class ArticleDAO extends DBHelper {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public List<ArticleDTO> selectLatests(String cate, int size) {
+		
+		List<ArticleDTO> latests = new ArrayList<>();
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_LATESTS);
+			psmt.setString(1, cate);
+			psmt.setInt(2, size);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				ArticleDTO dto = new ArticleDTO();
+				dto.setNo(rs.getString("no"));
+				dto.setTitle(rs.getString("title"));
+				dto.setRdate(rs.getString("rdate"));
+				latests.add(dto);
+			}
+			
+			close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return latests;
+		
 	}
 	
 	public void deleteComment(String no) {

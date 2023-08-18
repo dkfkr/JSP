@@ -8,6 +8,7 @@
 	String group = request.getParameter("group");
 	String cate  = request.getParameter("cate");
 	String pg = request.getParameter("pg");
+	String no = request.getParameter("no");
 	
 	ArticleDAO dao = new ArticleDAO();
 	

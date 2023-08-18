@@ -77,6 +77,11 @@ public class ArticleDTO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+	
+	public void setHit(String hit) {
+		this.parent = Integer.parseInt(hit);
+	}
+	
 	public String getWriter() {
 		return writer;
 	}

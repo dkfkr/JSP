@@ -48,6 +48,9 @@ public class SQL {
 												+ "ORDER BY `no` DESC "
 												+ "LIMIT ?, 10";
 	
+	public final static String SELECT_LATESTS = "SELECT * FROM Article WHERE `parent`= 0 AND `cate`=? "
+												+ "Order BY `no` DESC LIMIT ?";
+	
 	public final static String SELECT_COMMENTS = "SELECT "
 												+ "a.*, "
 												+ "b.`nick` "
@@ -67,6 +70,7 @@ public class SQL {
 	public final static String DELETE_ARTICLE = "DELETE FROM `Article` WHERE `no`=? AND `cate`=?";
 	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=?";
 	
+	public final static String HIT_INCREMENT = "UPDATE `Article` SET `hit` = `hit` + 1 WHERE `no`=?";
 	
 	
 	

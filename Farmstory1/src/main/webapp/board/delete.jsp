@@ -7,6 +7,8 @@
 	String cate = request.getParameter("cate");	
 
 	ArticleDAO dao = new ArticleDAO();
+	
 	dao.deleteArticle(no, cate);
-	response.sendRedirect("/Farmstory1/board/list.jsp?group="+group+"&cate="+cate);
+	
+	response.sendRedirect("/Farmstory1/board/list.jsp?group="+group+"&cate="+cate+"&no="+no);
 %>
