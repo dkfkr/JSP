@@ -5,8 +5,6 @@
 <%@ include file="./_header.jsp" %>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String cate = request.getParameter("cate");
-	String group = request.getParameter("group");
 	String no = request.getParameter("no");
 	
 	
@@ -52,7 +50,7 @@
                  	<% for (ArticleDTO latests : latests1 ) { %>
                         <tr>
                             <td>></td> 
-                            <td><a href="/Farmstory1/board/proc/viewProc.jsp?&no=<%= latests.getNo() %>">[<%= latests.getTitle() %>]</a></td>
+                            <td><a href="/Farmstory1/board/view.jsp?group=Croptalk&cate=grow&no=<%= latests.getNo() %>">[<%= latests.getTitle() %>]</a></td>
                             <td><%= latests.getRdate() %></td>
                         </tr>
                     <% } %>
@@ -67,7 +65,7 @@
                         
                         <tr>
                             <td>></td>
-                            <td><a href="/Farmstory1/board/proc/viewProc.jsp?&no=<%= latests.getNo() %>">[<%= latests.getTitle() %>]</a></td>
+                            <td><a href="/Farmstory1/board/view.jsp?group=Croptalk&cate=school&no=<%= latests.getNo() %>">[<%= latests.getTitle() %>]</a></td>
                             <td><%= latests.getRdate() %></td>
                         </tr>
                         <% } %>
@@ -80,7 +78,7 @@
                         <% for (ArticleDTO latests : latests3 ) { %>
                         <tr>
                             <td>></td>
-                            <td><a href="/Farmstory1/board/proc/viewProc.jsp?&no=<%= latests.getNo() %>">[<%= latests.getTitle() %>]</a></td>
+                            <td><a href="/Farmstory1/board/view.jsp?group=Croptalk&cate=story&no=<%= latests.getNo() %>">[<%= latests.getTitle() %>]</a></td>
                             <td><%= latests.getRdate() %></td>
                         </tr>
                         <% } %>

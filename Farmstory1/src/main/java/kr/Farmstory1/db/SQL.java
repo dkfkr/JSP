@@ -32,11 +32,11 @@ public class SQL {
 												+ "`rdate`=NOW()";
 	
 	public final static String INSERT_COMMENT = "INSERT INTO `Article` SET "
-												+ "`parent`=?, "
-												+ "`content`=?,"
-												+ "`writer`=?,"
-												+ "`regip`=?,"
-												+ "`rdate`=NOW()";
+			+ "`parent`=?, "
+			+ "`content`=?,"
+			+ "`writer`=?,"
+			+ "`regip`=?,"
+			+ "`rdate`=NOW()";
 	
 	public final static String SELECT_ARTICLE = "SELECT * FROM `Article` WHERE `no`=? AND `cate`=?";
 	public final static String SELECT_ARTICLES = "SELECT "
@@ -73,7 +73,18 @@ public class SQL {
 	public final static String HIT_INCREMENT = "UPDATE `Article` SET `hit` = `hit` + 1 WHERE `no`=?";
 	
 	
-	
+	public final static String INSERT_PRODUCT = "INSERT INTO `Product` SET "
+												+ "`type`=?, "
+												+ "`pName`=?,"
+												+ "`price`=?,"
+												+ "`delivery`=?,"
+												+ "`stock`=?,"
+												+ "`thumb1`=?,"
+												+ "`thumb2`=?,"
+												+ "`thumb3`=?,"
+												+ "`seller`=?,"
+												+ "`etc`=?,"
+												+ "`rdate`=NOW()";
 	
 	
 	
