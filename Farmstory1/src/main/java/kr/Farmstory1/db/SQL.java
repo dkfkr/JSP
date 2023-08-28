@@ -1,4 +1,4 @@
-package kr.Farmstory1.db;
+package kr.farmstory1.db;
 
 public class SQL {
 	// User
@@ -32,13 +32,17 @@ public class SQL {
 												+ "`rdate`=NOW()";
 	
 	public final static String INSERT_COMMENT = "INSERT INTO `Article` SET "
-			+ "`parent`=?, "
-			+ "`content`=?,"
-			+ "`writer`=?,"
-			+ "`regip`=?,"
-			+ "`rdate`=NOW()";
+												+ "`parent`=?, "
+												+ "`content`=?,"
+												+ "`writer`=?,"
+												+ "`regip`=?,"
+												+ "`rdate`=NOW()";
 	
-	public final static String SELECT_ARTICLE = "SELECT * FROM `Article` WHERE `no`=? AND `cate`=?";
+	public final static String SELECT_LATESTS = "SELECT `no`, `title`, `rdate` FROM `Article` "
+												+ "WHERE `parent`=0 AND `cate`=? "
+												+ "Order BY `no` DESC LIMIT ?";
+	
+	public final static String SELECT_ARTICLE = "SELECT * FROM `Article` WHERE `no`=?";
 	public final static String SELECT_ARTICLES = "SELECT "
 												+ "a.*, "
 												+ "b.`nick` "
@@ -47,9 +51,6 @@ public class SQL {
 												+ "WHERE `parent`=0 AND `cate`=? "
 												+ "ORDER BY `no` DESC "
 												+ "LIMIT ?, 10";
-	
-	public final static String SELECT_LATESTS = "SELECT * FROM Article WHERE `parent`= 0 AND `cate`=? "
-												+ "Order BY `no` DESC LIMIT ?";
 	
 	public final static String SELECT_COMMENTS = "SELECT "
 												+ "a.*, "
@@ -67,14 +68,13 @@ public class SQL {
 	public final static String UPDATE_ARTICLE_FOR_COMMENT_MINUS = "UPDATE `Article` SET `comment` = `comment` - 1 WHERE `no`=?";
 	public final static String UPDATE_COMMENT = "UPDATE `Article` SET `content`=? WHERE `no`=?";
 
-	public final static String DELETE_ARTICLE = "DELETE FROM `Article` WHERE `no`=? AND `cate`=?";
+	public final static String DELETE_ARTICLE = "DELETE FROM `Article` WHERE `no`=? OR `parent`=?";
 	public final static String DELETE_COMMENT = "DELETE FROM `Article` WHERE `no`=?";
 	
-	public final static String HIT_INCREMENT = "UPDATE `Article` SET `hit` = `hit` + 1 WHERE `no`=?";
 	
-	
+	// Product
 	public final static String INSERT_PRODUCT = "INSERT INTO `Product` SET "
-												+ "`type`=?, "
+												+ "`type`=?,"
 												+ "`pName`=?,"
 												+ "`price`=?,"
 												+ "`delivery`=?,"
@@ -87,16 +87,56 @@ public class SQL {
 												+ "`rdate`=NOW()";
 	
 	
+	public final static String SELECT_PRODUCT = "SELECT * FROM `Product` WHERE `pNo`=?";
+	public final static String SELECT_PRODUCTS_ALL = "SELECT * FROM `Product` WHERE `stock` > 0 LIMIT ?, 10";
+	public final static String SELECT_PRODUCTS_TYPE = "SELECT * FROM `Product` WHERE `stock` > 0 AND `type`=? LIMIT ?, 10";
+	public final static String SELECT_COUNT_PRODUCTS_ALL = "SELECT COUNT(*) FROM `Product` WHERE `stock` > 0";
+	public final static String SELECT_COUNT_PRODUCTS_TYPE = "SELECT COUNT(*) FROM `Product` WHERE `stock` > 0 AND `type`=?";
 	
+	// Order
+	public static final String INSERT_ORDER = "INSERT INTO `Order` SET "
+											+ "`orderProduct`=?,"
+											+ "`orderCount`=?,"
+											+ "`orderDelivery`=?,"
+											+ "`orderPrice`=?,"
+											+ "`orderTotal`=?,"
+											+ "`receiver`=?,"
+											+ "`hp`=?,"
+											+ "`zip`=?,"
+											+ "`addr1`=?,"
+											+ "`addr2`=?,"
+											+ "`orderEtc`=?,"
+											+ "`orderUser`=?,"
+											+ "`orderDate`=NOW()";
 	
+	public static final String SELECT_ORDERS = "SELECT "
+												+ "a.*,"
+												+ "b.`pName`,"
+												+ "b.`thumb1` "
+												+ "FROM `Order` AS a "
+												+ "JOIN `Product` AS b "
+												+ "ON a.orderProduct = b.pNo "
+												+ "LIMIT ?, 10";
 	
-	
-	
-	
-	
-	
-	
-			
-	
+	public static final String SELECT_COUNT_ORDERS = "SELECT COUNT(*) FROM `Order`";
+	public static final String DELETE_ORDER = "DELETE FROM `Order` WHERE `orderNo`=?";
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

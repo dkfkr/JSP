@@ -1,5 +1,5 @@
-<%@page import="kr.Farmstory1.dao.ArticleDAO"%>
-<%@page import="kr.Farmstory1.dto.ArticleDTO"%>
+<%@page import="kr.farmstory1.dto.ArticleDTO"%>
+<%@page import="kr.farmstory1.dao.ArticleDAO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -23,3 +23,8 @@
 	
 	response.sendRedirect("/Farmstory1/board/list.jsp?group="+group+"&cate="+cate);
 %>
+
+
+
+
+

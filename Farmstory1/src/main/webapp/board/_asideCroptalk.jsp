@@ -3,7 +3,7 @@
 	String cate  = request.getParameter("cate");
 %>
 <div id="sub">
-    <div><img src="/Farmstory1/images/sub_top_tit3.png" alt="CROP TALK"></div>
+    <div><img src="../images/sub_top_tit3.png" alt="CROP TALK"></div>
     <section class="croptalk">
         <aside>
             <img src="../images/sub_aside_cate3_tit.png" alt="농작물이야기"/>
@@ -16,15 +16,7 @@
         </aside>
         <article>
             <nav>
-            	<% if(cate.equals("story")){ %>
-                <img src="../images/sub_nav_tit_cate3_tit1.png" alt="농작물이야기"/>
-                <% } %>
-            	<% if(cate.equals("grow")){ %>
-                <img src="../images/sub_nav_tit_cate3_tit2.png" alt="농작물이야기"/>
-                <% } %>
-            	<% if(cate.equals("school")){ %>
-                <img src="../images/sub_nav_tit_cate3_tit3.png" alt="농작물이야기"/>
-                <% } %>
+                <img src="../images/sub_nav_tit_cate3_<%= cate %>.png" alt="농작물이야기"/>
                 <p>
                     HOME > 농작물이야기 > 
                     <% if(cate.equals("story")){ %>

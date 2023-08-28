@@ -6,6 +6,7 @@
 }
 ul, ol {list-style: none;}
 a {text-decoration: none; color: #111;}
+input, textarea {outline:none;}
 
 #container {
     width: 980px;
@@ -467,6 +468,12 @@ main > .info > div > .account {
     font-weight: bold;            
 }
 
+#sub > .market > .list > table .thumb {
+	width: 120px;
+	height: 120px;	
+}
+
+
 #sub > .market > .list > .paging {
     margin: 20px 0;
     text-align: center;
@@ -488,12 +495,14 @@ main > .info > div > .account {
 
 #sub > .market > .view > .basic {
     width: 100%;
-    height: 270px;
+    height: 300px;
     position: relative;
     overflow: hidden;
 }
 #sub > .market > .view > .basic > img {
     float: left;
+    width: 240px;
+    height: 240px;
 }
 #sub > .market > .view > .basic > table {
     float: right;
@@ -518,8 +527,7 @@ main > .info > div > .account {
     bottom: 0;
 }
 
-
-#sub > .market > .view > .detail {}
+#sub > .market > .view > .detail > img {width: 760px;}
 #sub > .market > .view > .delivery {}
 #sub > .market > .view > .exchange table {
     width: 100%;
@@ -566,6 +574,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #sub > .market > .order > .info > img {
     float: left;
+	width: 240px;
 }
 #sub > .market > .order > .info > table {
     float: right;
@@ -663,9 +672,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 /* 이벤트 */
-#sub > .event .lnb > li > a {background-image: url('../images/sub_cate4_lnb1.png');}
-#sub > .event .lnb > li > a:hover {background-image: url('../images/sub_cate4_lnb1_ov.png');}
-#sub > .event .lnb > li.on > a {background-image: url('../images/sub_cate4_lnb1_ov.png');}
+#sub > .event .lnb > li:nth-child(1) > a {background-image: url('../images/sub_cate4_lnb1.png');}
+#sub > .event .lnb > li:nth-child(1) > a:hover {background-image: url('../images/sub_cate4_lnb1_ov.png');}
+#sub > .event .lnb > li:nth-child(1).on > a {background-image: url('../images/sub_cate4_lnb1_ov.png');}
 
 /* 커뮤니티 */
 #sub > .community .lnb > li:nth-child(1) > a {background-image: url('../images/sub_cate5_lnb1.png');}

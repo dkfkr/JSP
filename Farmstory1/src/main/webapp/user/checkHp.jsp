@@ -1,4 +1,4 @@
-<%@page import="kr.Farmstory1.dao.UserDAO"%>
+<%@page import="kr.farmstory1.dao.UserDAO"%>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>

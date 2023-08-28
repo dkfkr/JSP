@@ -1,15 +1,15 @@
-<%@page import="kr.Farmstory1.dto.ArticleDTO"%>
+<%@page import="kr.farmstory1.dto.ArticleDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="kr.Farmstory1.dao.ArticleDAO"%>
+<%@page import="kr.farmstory1.dao.ArticleDAO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String group = request.getParameter("group");
 	String cate  = request.getParameter("cate");
-	String pg = request.getParameter("pg");
-	String no = request.getParameter("no");
+	String pg    = request.getParameter("pg");
 	
+	// DAO 객체 생성
 	ArticleDAO dao = new ArticleDAO();
 	
 	// 페이지 관련 변수 선언
@@ -57,6 +57,7 @@
 	
 	pageContext.include("./_aside"+group+".jsp");
 %>
+
 			<section class="list">
 			    <h3>글목록</h3>
 			    <article>
@@ -68,12 +69,10 @@
 			                <th>날짜</th>
 			                <th>조회</th>
 			            </tr>
-			            <%
-                		for(ArticleDTO article : articles){
-                		%>
+			            <% for(ArticleDTO article : articles){ %>
 			            <tr>
 			                <td><%= pageStartNum-- %></td>
-			                <td><a href="/Farmstory1/board/view.jsp?group=<%= group %>&cate=<%= cate %>&no=<%= article.getNo() %>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
+			                <td><a href="./view.jsp?group=<%= group %>&cate=<%= cate %>&no=<%= article.getNo() %>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
 			                <td><%= article.getNick() %></td>
 			                <td><%= article.getRdate() %></td>
 			                <td><%= article.getHit() %></td>
@@ -83,19 +82,19 @@
 			    </article>
 			
 			    <!-- 페이지 네비게이션 -->
-			    <div class="paging">
-			    	<% if(pageGroupStart > 1){ %>
-			        <a href="./list.jsp?group=<%= group %>&cate=<%= cate %>&pg=<%= pageGroupStart - 1 %>" class="prev">이전</a>
-			        <% } %>
-			        
-			        <% for(int i=pageGroupStart ; i<=pageGroupEnd ; i++){ %>
-			        <a href="./list.jsp?group=<%= group %>&cate=<%= cate %>&pg=<%= i %>" class="num current">1</a>
-			         <% } %>
-			         
-			        <% if(pageGroupEnd < lastPageNum){ %>
-			        <a href="./list.jsp?group=<%= group %>&cate=<%= cate %>&pg=<%= pageGroupEnd + 1 %>" class="next">다음</a>
-			        <% } %>
-			    </div>
+		        <div class="paging">
+		        	<% if(pageGroupStart > 1){ %>
+		            <a href="./list.jsp?group=<%= group %>&cate=<%= cate %>&pg=<%= pageGroupStart - 1 %>" class="prev">이전</a>
+		            <% } %>
+		            
+		            <% for(int i=pageGroupStart ; i<=pageGroupEnd ; i++){ %>
+		            <a href="./list.jsp?group=<%= group %>&cate=<%= cate %>&pg=<%= i %>" class="num <%= (currentPage == i)?"current":"" %>"><%= i %></a>
+		            <% } %>
+		            
+		            <% if(pageGroupEnd < lastPageNum){ %>
+		            <a href="./list.jsp?group=<%= group %>&cate=<%= cate %>&pg=<%= pageGroupEnd + 1 %>" class="next">다음</a>
+		            <% } %>
+		        </div>
 			
 			    <!-- 글쓰기 버튼 -->
 			    <a href="./write.jsp?group=<%= group %>&cate=<%= cate %>" class="btnWrite">글쓰기</a>

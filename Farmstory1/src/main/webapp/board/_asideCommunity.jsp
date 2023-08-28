@@ -19,21 +19,7 @@
         
         <article>
             <nav>
-            	<% if (cate.equals("notice")) { %>
-                <img src="../images/sub_nav_tit_cate5_tit1.png" alt="커뮤니티"/>
-                <% } %>
-            	<% if (cate.equals("menu")) { %>
-                <img src="../images/sub_nav_tit_cate5_tit2.png" alt="커뮤니티"/>
-                <% } %>
-            	<% if (cate.equals("chef")) { %>
-                <img src="../images/sub_nav_tit_cate5_tit3.png" alt="커뮤니티"/>
-                <% } %>
-            	<% if (cate.equals("qna")) { %>
-                <img src="../images/sub_nav_tit_cate5_tit4.png" alt="커뮤니티"/>
-                <% } %>
-            	<% if (cate.equals("faq")) { %>
-                <img src="../images/sub_nav_tit_cate5_tit5.png" alt="커뮤니티"/>
-                <% } %>
+                <img src="../images/sub_nav_tit_cate5_<%= cate %>.png" alt="커뮤니티"/>
                 <p>
                     HOME > 커뮤니티 > 
                     <%

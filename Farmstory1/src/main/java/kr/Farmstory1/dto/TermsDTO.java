@@ -1,4 +1,4 @@
-package kr.Farmstory1.dto;
+package kr.farmstory1.dto;
 
 public class TermsDTO {
 	private String terms;

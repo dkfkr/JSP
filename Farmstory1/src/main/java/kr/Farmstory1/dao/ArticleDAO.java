@@ -1,15 +1,16 @@
-package kr.Farmstory1.dao;
-
-import kr.Farmstory1.db.*;
-import kr.Farmstory1.dto.ArticleDTO;
+package kr.farmstory1.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.farmstory1.db.DBHelper;
+import kr.farmstory1.db.SQL;
+import kr.farmstory1.dto.ArticleDTO;
+
 public class ArticleDAO extends DBHelper {
 
 	// 기본 CRUD
-	public void insertArticle( ArticleDTO dto) {
+	public void insertArticle(ArticleDTO dto) {
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.INSERT_ARTICLE);
@@ -25,7 +26,7 @@ public class ArticleDAO extends DBHelper {
 		}
 	}
 	
-	public ArticleDTO selectArticle(String no, String cate) {
+	public ArticleDTO selectArticle(String no) {
 		
 		ArticleDTO dto = null;
 		
@@ -33,7 +34,6 @@ public class ArticleDAO extends DBHelper {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_ARTICLE);
 			psmt.setString(1, no);
-			psmt.setString(2, cate);
 			
 			rs = psmt.executeQuery();
 			
@@ -108,12 +108,12 @@ public class ArticleDAO extends DBHelper {
 		}
 	}
 	
-	public void deleteArticle(String no, String cate) {
+	public void deleteArticle(String no) {
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.DELETE_ARTICLE);
 			psmt.setString(1, no);
-			psmt.setString(2, cate);
+			psmt.setString(2, no);
 			psmt.executeUpdate();
 			close();
 		}catch (Exception e) {
@@ -122,6 +122,33 @@ public class ArticleDAO extends DBHelper {
 	}
 
 	// 추가 
+	public List<ArticleDTO> selectLatests(String cate, int size) {
+		
+		List<ArticleDTO> latests = new ArrayList<>();
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_LATESTS);
+			psmt.setString(1, cate);
+			psmt.setInt(2, size);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				ArticleDTO dto = new ArticleDTO();
+				dto.setNo(rs.getInt("no"));
+				dto.setTitle(rs.getString("title"));
+				dto.setRdate(rs.getString("rdate"));
+				latests.add(dto);
+			}
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return latests;
+	}
+	
 	public int selectCountTotal(String cate) {
 		
 		int total = 0;
@@ -218,18 +245,6 @@ public class ArticleDAO extends DBHelper {
 		}
 	}
 
-	public void hitincrement(String no) {
-		try {
-			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.HIT_INCREMENT);
-			psmt.setString(1, no);
-			psmt.executeUpdate();
-			close();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public void updateComment(String no, String content) {
 		try {
 			conn = getConnection();
@@ -241,36 +256,6 @@ public class ArticleDAO extends DBHelper {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public List<ArticleDTO> selectLatests(String cate, int size) {
-		
-		List<ArticleDTO> latests = new ArrayList<>();
-		
-		try {
-			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_LATESTS);
-			psmt.setString(1, cate);
-			psmt.setInt(2, size);
-			
-			rs = psmt.executeQuery();
-			
-			while(rs.next()) {
-				ArticleDTO dto = new ArticleDTO();
-				dto.setNo(rs.getString("no"));
-				dto.setTitle(rs.getString("title"));
-				dto.setRdate(rs.getString("rdate"));
-				latests.add(dto);
-			}
-			
-			close();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return latests;
-		
 	}
 	
 	public void deleteComment(String no) {

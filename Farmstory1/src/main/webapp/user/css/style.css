@@ -76,7 +76,7 @@
     padding: 10px 0;
     box-sizing: border-box;
 }
-
+.terms > table tr {}
 .terms > table td {
     padding: 6px;
     border: 1px solid #e9e9e9;
@@ -91,9 +91,9 @@
     padding: 2px;
     box-sizing: border-box;
 }
-.terms > table > td > label {float: right;}
-
-.terms > table > p {
+.terms > table td > label {float: right;}
+.terms > table td > label > input[type=checkbox] {}
+.terms > table p {
     float: right;
 }
 
@@ -103,6 +103,7 @@
 }
 
 
+/* 회원가입 */
 .register {
     width: 600px;
     height: auto;            

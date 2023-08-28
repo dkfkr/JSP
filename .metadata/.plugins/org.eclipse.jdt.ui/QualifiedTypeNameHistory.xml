@@ -33,8 +33,24 @@
     <fullyQualifiedTypeName name="kr.Farmstory1.db.SQL"/>
     <fullyQualifiedTypeName name="org.apache.tomcat.dbcp.dbcp2.PStmtKey"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="kr.Farmstory1.dto.ArticleDTO"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="javax.security.auth.message.callback.PrivateKeyCallback.Request"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="kr.co.jboard2.db.DBHelper"/>
+    <fullyQualifiedTypeName name="java.lang.System.Logger"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="kr.Farmstory1.dto.ArticleDTO"/>
+    <fullyQualifiedTypeName name="kr.co.jboard2.dto.TermsDTO"/>
+    <fullyQualifiedTypeName name="kr.co.jboard2.dao.TermsDAO"/>
+    <fullyQualifiedTypeName name="kr.co.jboard2.db.SQL"/>
+    <fullyQualifiedTypeName name="kr.co.jboard2.dao.UserDAO"/>
+    <fullyQualifiedTypeName name="kr.co.jboard2.dto.UserDTO"/>
+    <fullyQualifiedTypeName name="kr.co.jboard2.service.UserService"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="org.slf4j.Logger"/>
+    <fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
 </qualifiedTypeNameHistroy>

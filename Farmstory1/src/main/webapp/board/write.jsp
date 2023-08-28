@@ -5,14 +5,13 @@
 	String group = request.getParameter("group");
 	String cate  = request.getParameter("cate");
 	
-	//로그인 여부 확인
-	if (sessUser == null) {
-		response.sendRedirect("/Farmstory1/board/list.jsp?success=101&group="+group+"&cate="+cate);
+	// 로그인 여부 확인
+	if(sessUser == null){
+		response.sendRedirect("/Farmstory1/user/login.jsp?success=101&target=write&group="+group+"&cate="+cate);
 		return;
 	}
 	
 	pageContext.include("./_aside"+group+".jsp");
-	
 %>
 <section class="write">
     <h3>글쓰기</h3>
