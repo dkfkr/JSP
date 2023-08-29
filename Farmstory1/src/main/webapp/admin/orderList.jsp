@@ -106,7 +106,11 @@
 	                <tr>
 	                    <td class="chk"><input type="checkbox" name="chk" value="<%= order.getOrderNo() %>"/></td>
 	                    <td class="orderNo"><%= order.getOrderNo() %></td>
-	                    <td class="pName"><%= Utils.ellipsis(order.getpName(), 5) %></td>                            
+	                    <% if(order.getpName().length() > 5) { %>
+	                    <td class="pName"><%= Utils.ellipsis(order.getpName(), 5) %></td>
+	                    <% } else { %>
+	                    <td class="pName"><%= order.getpName() %></td>
+	                    <% } %>                            
 	                    <td class="price"><%= Utils.comma(order.getOrderPrice()) %>원</td>
 	                    <td class="count"><%= order.getOrderCount() %></td>
 	                    <td class="delivery"><%= Utils.comma(order.getOrderDelivery()) %>원</td>

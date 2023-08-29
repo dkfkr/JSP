@@ -120,7 +120,13 @@ public class SQL {
 	
 	public static final String SELECT_COUNT_ORDERS = "SELECT COUNT(*) FROM `Order`";
 	public static final String DELETE_ORDER = "DELETE FROM `Order` WHERE `orderNo`=?";
-	
+	public final static String SELECT_ORDERLIST = "SELECT "
+												+ "a.*,"
+												+ "b.* "
+												+ "FROM `Order` AS a "
+												+ "JOIN `Product` AS b "
+												+ "ON a.orderProduct = b.pNo "
+												+ "LIMIT ?";
 }
 
 

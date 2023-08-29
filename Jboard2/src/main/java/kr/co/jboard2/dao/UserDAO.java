@@ -12,10 +12,11 @@ import kr.co.jboard2.dto.UserDTO;
 
 public class UserDAO extends DBHelper {
 		
-	public static UserDAO instance = new UserDAO();
+	private static UserDAO instance = new UserDAO();
 	public static UserDAO getInstance() {
 		return instance;
 	}
+	private UserDAO() {}
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	

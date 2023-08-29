@@ -16,6 +16,7 @@ public class OrderDTO {
 	private String orderEtc;
 	private String orderUser;
 	private String orderDate;
+	private int stock;
 	
 	// 추가필드
 	private String pName;
@@ -133,6 +134,15 @@ public class OrderDTO {
 	}
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	public void setStock(String stock) {
+		this.stock = Integer.parseInt(stock);
 	}
 	
 }

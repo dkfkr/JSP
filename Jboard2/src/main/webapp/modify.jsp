@@ -25,7 +25,7 @@
 			            </table>
                     
                     <div>
-                        <a href="./view.jsp" class="btn btnCancel">ì·¨ì</a>
+                        <a href="./view.do" class="btn btnCancel">ì·¨ì</a>
                         <input type="submit" value="ìì±ìë£" class="btn btnComplete"/>
                     </div>
                 </form>

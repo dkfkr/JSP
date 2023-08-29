@@ -5,6 +5,7 @@ import java.util.List;
 
 import kr.farmstory1.db.DBHelper;
 import kr.farmstory1.db.SQL;
+import kr.farmstory1.dto.ArticleDTO;
 import kr.farmstory1.dto.OrderDTO;
 
 public class OrderDAO extends DBHelper {
@@ -109,5 +110,44 @@ public class OrderDAO extends DBHelper {
 			e.printStackTrace();
 		}
 		return total;
+	}
+	
+	public List<OrderDTO> selectorderlist(int size) {
+		
+		List<OrderDTO> orderlist = new ArrayList<>();
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_ORDERLIST);
+			psmt.setInt(1, size);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				OrderDTO order = new OrderDTO();
+				order.setOrderNo(rs.getInt(1));
+				order.setOrderProduct(rs.getInt(2));
+				order.setOrderCount(rs.getInt(3));
+				order.setOrderDelivery(rs.getInt(4));
+				order.setOrderPrice(rs.getInt(5));
+				order.setOrderTotal(rs.getInt(6));
+				order.setReceiver(rs.getString(7));
+				order.setHp(rs.getString(8));
+				order.setZip(rs.getString(9));
+				order.setAddr1(rs.getString(10));
+				order.setAddr2(rs.getString(11));
+				order.setOrderEtc(rs.getString(12));
+				order.setOrderUser(rs.getString(13));
+				order.setOrderDate(rs.getString(14));
+				order.setpName(rs.getString(15));
+				order.setStock(rs.getString(16));
+				orderlist.add(order);
+			}
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return orderlist;
 	}
 }

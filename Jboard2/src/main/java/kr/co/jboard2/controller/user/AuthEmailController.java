@@ -16,28 +16,51 @@ import com.google.gson.JsonObject;
 
 import kr.co.jboard2.service.UserService;
 
+@WebServlet("/user/authEmail.do")
+public class AuthEmailController extends HttpServlet {
 
-@WebServlet("/user/checkHp.do")
-public class CheckHpController extends HttpServlet {
-
-	private static final long serialVersionUID = -967693116122230004L;
+	private static final long serialVersionUID = 12312L;
+	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private UserService service = UserService.getInstance();
 	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String hp = req.getParameter("hp");
 		
-		int result = service.selectCountHp(hp);
+		String email = req.getParameter("email");
 		
-		logger.info("result : " + result);
+		int status = service.sendCodeByEmail(email);
+		
+		logger.info("status : " + status);
 		
 		// JSON 생성
 		JsonObject json = new JsonObject();
-		json.addProperty("result", result);
+		json.addProperty("status", status);
 		
 		// JSON 출력
 		PrintWriter writer = resp.getWriter();
 		writer.print(json.toString());
+		
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String code = req.getParameter("code");
+		
+		int result = service.cofirmCodeByEmail(code);
+		
+		// JSON 생성
+		JsonObject json = new JsonObject();
+		json.addProperty("result", result);
+				
+		// JSON 출력
+		PrintWriter writer = resp.getWriter();
+		writer.print(json.toString());
+				
+	}
+	
+	
+	
 }
