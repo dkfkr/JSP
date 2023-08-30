@@ -459,3 +459,18 @@
 8월 29, 2023 10:43:03.979 ERROR: Time is after notAfter
 8월 29, 2023 10:43:03.979 
 8월 29, 2023 10:43:03.979 
+
+8월 29, 2023 14:34:35.56 NEW SESSION
+8월 29, 2023 14:34:35.56 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 29, 2023 14:36:44.358 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 29, 2023 14:42:00.382 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 29, 2023 14:44:04.523 [8476:15320:0829/144404.523:ERROR:device_event_log_impl.cc(222)] [14:44:04.523] Bluetooth: bluetooth_adapter_winrt.cc:1058 Getting Default Adapter failed.
+8월 29, 2023 15:10:05.341 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 29, 2023 15:26:25.963 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 29, 2023 15:26:34.999 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 29, 2023 15:27:05.459 [12160:13324:0829/152705.459:ERROR:device_event_log_impl.cc(222)] [15:27:05.460] Bluetooth: bluetooth_adapter_winrt.cc:1058 Getting Default Adapter failed.
+8월 29, 2023 17:40:40.434 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+
+8월 30, 2023 08:52:48.941 NEW SESSION
+8월 30, 2023 08:52:48.941 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 30, 2023 08:55:15.364 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.

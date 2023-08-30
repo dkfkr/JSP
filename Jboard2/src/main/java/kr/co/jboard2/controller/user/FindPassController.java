@@ -8,17 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 @WebServlet("/user/findPass.do")
-public class FindPassController extends HttpServlet{
+public class FindPassController extends HttpServlet {
+	private static final long serialVersionUID = 1999445619156397100L;
 
-	private static final long serialVersionUID = 15L;
-
-	@Override
-	public void init() throws ServletException {
-
-	}
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -28,7 +24,12 @@ public class FindPassController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
+		String uid = req.getParameter("uid");
+		HttpSession session = req.getSession();
+		session.setAttribute("uid", uid);
+		
+		resp.sendRedirect("/Jboard2/user/findPassChange.do");
+		
 	}
-	
 }

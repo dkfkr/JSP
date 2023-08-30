@@ -1,8 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<script>
+	const success = ${success};
+
+	if(success == 100){
+		alert('아이디, 비밀번호를 다시 확인하십시요.');
+	}else if(success == 200){
+		alert('정상적으로 로그아웃 되었습니다.');
+	}else if(success == 300){
+		alert('정상적으로 비밀번호가 변경되었습니다 다시 로그인 해주세요');
+	}
+
+</script>
 <main id="user">
     <section class="login">
-        <form action="../list.do">
+        <form action="/Jboard2/user/login.do" method="post">
             <table border="0">
                 <tr>
                     <td><img src="/Jboard2/img/login_ico_id.png" alt="아이디"/></td>
@@ -14,7 +26,6 @@
                 </tr>
             </table>
             <input type="submit" value="로그인" class="btnLogin"/>
-            
         </form>
         <div>
             <h3>회원 로그인 안내</h3>
@@ -23,7 +34,7 @@
             </p>
             <div style="text-align: right;">
                 <a href="/Jboard2/user/findId.do">아이디 |</a>
-                <a href="/Jboard2/user/findPw.do">비밀번호찾기 |</a>
+                <a href="/Jboard2/user/findPass.do">비밀번호찾기 |</a>
                 <a href="/Jboard2/user/terms.do">회원가입</a>
             </div>                    
         </div>

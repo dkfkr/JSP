@@ -1,13 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/Jboard2/js/zipcode.js"></script>
 <script src="/Jboard2/js/validation.js"></script>
 <script src="/Jboard2/js/checkUser.js"></script>
-<script src="/Jboard2/js/zipcode.js"></script>
 <script src="/Jboard2/js/authEmail.js"></script>
 <main id="user">
     <section class="register">
         <form id="formUser" action="/Jboard2/user/register.do" method="post">
+        	<input type="hidden" name="type" value="REGISTER"/> 
             <table border="1">
                 <caption>사이트 이용정보 입력</caption>
                 <tr>
@@ -24,8 +25,10 @@
                 </tr>
                 <tr>
                     <td>비밀번호 확인</td>
-                    <td><input type="password" name="pass2" placeholder="비밀번호 입력 확인"/><span class="passResult"></span></td>
-                	
+                    <td>
+                    	<input type="password" name="pass2" placeholder="비밀번호 입력 확인"/>
+                    	<span class="passResult"></span>
+                    </td>
                 </tr>
             </table>
 
@@ -35,7 +38,7 @@
                     <td>이름</td>
                     <td>
                         <input type="text" name="name" placeholder="이름 입력"/>
-                        <span class="nameResult"></span>                        
+                        <span class="nameResult"></span>
                     </td>
                 </tr>
                 <tr>

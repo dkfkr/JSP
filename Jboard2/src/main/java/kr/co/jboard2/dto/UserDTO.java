@@ -92,8 +92,5 @@ public class UserDTO {
 	}
 	public void setLeaveDate(String leaveDate) {
 		this.leaveDate = leaveDate;
-	}	
-	
-	
-	
+	}
 }
