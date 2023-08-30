@@ -36,9 +36,18 @@ public class MyInfoController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String kind = req.getParameter("kind");
 		String uid = req.getParameter("uid");
+		String pass = req.getParameter("pass");
+		String name = req.getParameter("name");
+		String nick = req.getParameter("nick");
+		String email = req.getParameter("email");
+		String hp = req.getParameter("hp");
+		String zip = req.getParameter("zip");
+		String addr1 = req.getParameter("addr1");
+		String addr2 = req.getParameter("addr2");
 		
 		logger.debug("kind : " + kind);
 		logger.debug("uid : " + uid);
+		logger.debug("pass : " + pass);
 		
 		switch(kind) {
 		case "WITHDRAW": 
@@ -56,13 +65,35 @@ public class MyInfoController extends HttpServlet {
 			
 			break;
 			
-		case "PASSWORLD": 
+		case "PASSWORD": 
+			int result2 = service.passChange(uid, pass);
 			
+			// JSON 생성
+			JsonObject json2 = new JsonObject();
+			json2.addProperty("result2", result2);
+						
+			// JSON 출력
+			PrintWriter writer2 = resp.getWriter();
+			writer2.print(json2.toString());
+						
 			break;
-		case "REGISTER": 
+		case "MODIFY": 
 			
+			UserDTO dto = new UserDTO();
+			dto.setUid(uid);
+			dto.setName(name);
+			dto.setNick(nick);
+			dto.setEmail(email);
+			dto.setHp(hp);
+			dto.setZip(zip);
+			dto.setAddr1(addr1);
+			dto.setAddr2(addr2);
+			
+			service.updateUser(dto);
+			resp.sendRedirect("/Jboard2/user/logout.do");
 			break;
-	
-		}		
+		
+		}
+		
 	}
 }

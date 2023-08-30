@@ -53,6 +53,13 @@ public class AuthEmailController extends HttpServlet {
 			if(result == 1) {
 				status = service.sendCodeByEmail(email);
 			}
+		}else if(type.equals("MODIFY")){
+			// 비밀번호 찾기 할 때 이메일 인증
+			result = service.selectCountEmail(email);
+			
+			if(result == 1) {
+				status = service.sendCodeByEmail(email);
+			}
 		}
 		
 		// JSON 생성

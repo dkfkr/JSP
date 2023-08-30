@@ -65,6 +65,15 @@ public class SQL {
 	public final static String UPDATE_ARTICLE = "UPDATE `Article` SET `title`=?, `content`=? WHERE `no`=?";
 											
 	public final static String PASS_CHANGE = "UPDATE `User` SET `pass`=SHA2(?, 256) WHERE `uid`=?";
+	public final static String UPDATE_USER = "UPDATE `User` SET "
+											+ "`name`=?,"
+											+ "`nick`=?,"
+											+ "`email`=?,"
+											+ "`hp`=?,"
+											+ "`zip`=?,"
+											+ "`addr1`=?,"
+											+ "`addr2`=?"
+											+ " WHERE `uid`=?";
 	public final static String UPDATE_USER_FOR_WITHDRAW = "UPDATE `User` SET "
 														+ "`pass`=null,"
 														+ "`name`=null,"

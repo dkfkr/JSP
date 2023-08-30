@@ -85,7 +85,7 @@ public class UserDTO {
 		return regDate;
 	}
 	public void setRegDate(String regDate) {
-		this.regDate = regDate;
+		this.regDate = regDate.substring(2, 10);
 	}
 	public String getLeaveDate() {
 		return leaveDate;

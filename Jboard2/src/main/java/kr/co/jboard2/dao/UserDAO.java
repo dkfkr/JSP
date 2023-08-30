@@ -279,7 +279,9 @@ public class UserDAO extends DBHelper {
 		return dto;
 	}
 	
-	public void passChange(String uid, String pass) {
+	public int passChange(String uid, String pass) {
+		
+		int result2 = 0;
 		
 		try {
 			
@@ -287,20 +289,42 @@ public class UserDAO extends DBHelper {
 			psmt = conn.prepareStatement(SQL.PASS_CHANGE);
 			psmt.setString(1, pass);
 			psmt.setString(2, uid);
-			psmt.executeUpdate();
+			result2 = psmt.executeUpdate();
 			close();
 			
 		} catch (Exception e) {
 			logger.error("passChange() error : " + e.getMessage());
 		}
 		
+		return result2;
 	}
 	
 	public List<UserDTO> selectUsers() {
 		return null;
 	}
 	
-	public void updateUser(UserDTO dto) {}
+	public void updateUser(UserDTO dto) {
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_USER);
+			psmt.setString(1, dto.getName());
+			psmt.setString(2, dto.getNick());
+			psmt.setString(3, dto.getEmail());
+			psmt.setString(4, dto.getHp());
+			psmt.setString(5, dto.getZip());
+			psmt.setString(6, dto.getAddr1());
+			psmt.setString(7, dto.getAddr2());
+			psmt.setString(8, dto.getUid());
+			psmt.executeUpdate();
+			close();
+			
+		} catch (Exception e) {
+			logger.error("passChange() error : " + e.getMessage());
+		}	
+		
+	}
 	
 	
 	public int updateUserForWithdraw(String uid) {

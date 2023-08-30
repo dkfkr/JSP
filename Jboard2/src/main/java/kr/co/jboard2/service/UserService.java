@@ -70,8 +70,8 @@ public class UserService {
 		return dao.selectUserByNameAndEmail(name, email);				
 	}
 	
-	public void passChange(String uid, String pass) {
-		dao.passChange(uid, pass);
+	public int passChange(String uid, String pass) {
+		return dao.passChange(uid, pass);
 	}
 	
 	public List<UserDTO> selectUsers() {
@@ -97,8 +97,8 @@ public class UserService {
 		generatedCode = String.valueOf(code);
 		
 		// 기본정보
-		String sender = "chhak0503@gmail.com";
-		String password = "hmdlvbblvplewjhj";
+		String sender = "fg012023@gmail.com";
+		String password = "zgnzinuvqtvkrrgt";
 		String title = "Jboard2 인증코드 입니다.";
 		String content = "<h1>인증코드는 " + code + "</h1>";
 		

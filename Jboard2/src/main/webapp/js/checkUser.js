@@ -1,11 +1,13 @@
 /**
  * 사용자 중복체크
  */
-window.onload = function(){
+$(function() {
 	// 아이디 중복체크
 	const inputUid = document.getElementsByName('uid')[0];
 	const uidResult = document.getElementsByClassName('uidResult')[0];
 	const btnCheckUid = document.getElementById('btnCheckUid');
+	
+	if(btnCheckUid != null){
 	
 	btnCheckUid.onclick = function(){
 		
@@ -45,7 +47,7 @@ window.onload = function(){
 			}// readyState end
 		}// onreadystatechange end
 	}// btnCheckUid onclick end
-	
+}
 	// 닉네임 중복체크
 	$('#btnCheckNick').click(function(){
 		
@@ -105,5 +107,4 @@ window.onload = function(){
 		});
 	});
 	
-	
-}// onload end
+});// onload end
