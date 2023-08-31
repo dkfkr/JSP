@@ -1,9 +1,11 @@
 package kr.co.jboard2.controller;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,31 +15,34 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import kr.co.jboard2.dto.ArticleDTO;
+import kr.co.jboard2.dto.FileDTO;
 import kr.co.jboard2.service.ArticleService;
+import kr.co.jboard2.service.FileService;
 
-@WebServlet("/view.do")
-public class ViewController extends HttpServlet{
+@WebServlet("/delete.do")
+public class deleteController extends HttpServlet {
 
-	private static final long serialVersionUID = -2120022050925682570L;
+	private static final long serialVersionUID = 992090960044622875L;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private ArticleService service = ArticleService.INSTANCE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String no = req.getParameter("no");
-		
-		
-		ArticleDTO view = service.selectArticle(no);
-		
-		List<ArticleDTO> comment = service.selectComments(no);
-		req.setAttribute("no", no);
-		req.setAttribute("view", view);
-		req.setAttribute("comment", comment);
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("view.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("write.jsp");
 		dispatcher.forward(req, resp);
+		
 	}
 	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+
+		//리다이렉트
+		resp.sendRedirect("/Jboard2/list.do");
+	}
 }

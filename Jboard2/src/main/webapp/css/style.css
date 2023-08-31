@@ -420,7 +420,7 @@ footer > p {
 #board > .view > .commentList .nick {}
 #board > .view > .commentList .date {}
 #board > .view > .commentList .content {padding: 10px;}
-#board > .view > .commentList > article > div {float: right;}
+#board > .view > .commentList > article > div {float: right; }
 #board > .view > .commentList > article .remove {}
 #board > .view > .commentList > article .modify {}
 #board > .view > .commentList > .empty {
@@ -440,7 +440,8 @@ footer > p {
     resize: none;
 }
 #board > .view > .commentForm div {
-    float: right;
+	position: relative;
+	float: right;
     margin-top: 10px;
 }
 
@@ -500,6 +501,7 @@ footer > p {
 }
 
 .btnRegister {}
+
 .btnWrite {
     position: absolute;
     right: 0;

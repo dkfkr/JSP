@@ -57,7 +57,7 @@ public class AuthEmailController extends HttpServlet {
 			// 비밀번호 찾기 할 때 이메일 인증
 			result = service.selectCountEmail(email);
 			
-			if(result == 1) {
+			if(result == 0) {
 				status = service.sendCodeByEmail(email);
 			}
 		}
