@@ -29,7 +29,7 @@ public class WriteController extends HttpServlet {
 	private static final long serialVersionUID = 992090960044622875L;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private ArticleService aService = ArticleService.INSTANCE;
-	private FileService fService = FileService.getInstance();
+	private FileService fService = FileService.INSTANCE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

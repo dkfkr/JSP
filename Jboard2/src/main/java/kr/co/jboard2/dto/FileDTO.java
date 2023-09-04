@@ -16,12 +16,20 @@ public class FileDTO {
 		this.fno = fno;
 	}
 	
+	public void setFno(String fno) {
+		this.fno = Integer.parseInt(fno);
+	}
+	
 	public int getAno() {
 		return ano;
 	}
 	
 	public void setAno(int ano) {
 		this.ano = ano;
+	}
+	
+	public void setAno(String ano) {
+		this.ano = Integer.parseInt(ano);
 	}
 
 	public String getOriName() {
@@ -55,4 +63,13 @@ public class FileDTO {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
+
+	@Override
+	public String toString() {
+		return "FileDTO [fno=" + fno + ", ano=" + ano + ", oriName=" + oriName + ", newName=" + newName + ", download="
+				+ download + ", rdate=" + rdate + "]";
+	}
+	
+	
+	
 }

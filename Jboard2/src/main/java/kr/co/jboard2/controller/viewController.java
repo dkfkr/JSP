@@ -27,14 +27,18 @@ public class ViewController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String no = req.getParameter("no");
-		
-		
+	
 		ArticleDTO view = service.selectArticle(no);
 		
 		List<ArticleDTO> comment = service.selectComments(no);
+		
 		req.setAttribute("no", no);
 		req.setAttribute("view", view);
 		req.setAttribute("comment", comment);
+		
+		logger.debug("no" + no);
+		logger.debug("view" + view);
+		logger.debug("comment" + comment);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("view.jsp");
 		dispatcher.forward(req, resp);

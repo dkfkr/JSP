@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import kr.co.jboard2.db.DBHelper;
 import kr.co.jboard2.db.SQL;
 import kr.co.jboard2.dto.ArticleDTO;
+import kr.co.jboard2.dto.FileDTO;
 
 public class ArticleDAO extends DBHelper {
 
@@ -56,6 +57,7 @@ public class ArticleDAO extends DBHelper {
 			
 			if(rs.next()){
 				article = new ArticleDTO();
+				
 				article.setNo(rs.getInt(1));
 				article.setParent(rs.getInt(2));
 				article.setComment(rs.getInt(3));
@@ -66,23 +68,43 @@ public class ArticleDAO extends DBHelper {
 				article.setHit(rs.getInt(8));
 				article.setWriter(rs.getString(9));
 				article.setRegip(rs.getString(10));
-				article.setRdate(rs.getString(11));				
+				article.setRdate(rs.getString(11));	
+				
+				FileDTO fileDto = new FileDTO();
+				
+				fileDto.setFno(rs.getInt(12));				
+				fileDto.setAno(rs.getInt(13));				
+				fileDto.setOriName(rs.getString(14));				
+				fileDto.setNewName(rs.getString(15));				
+				fileDto.setDownload(rs.getInt(16));				
+				fileDto.setRdate(rs.getString(17));
+				
+				article.setFileDto(fileDto);
+				
 			}
 			close();
 		}catch(Exception e){
 			logger.error("selectArticle() - "+e.getMessage());
 		}
+		
 		return article;
+		
 	}
 	
-	public List<ArticleDTO> selectArticles(int start) {
+	public List<ArticleDTO> selectArticles(int start, String search) {
 		
 		List<ArticleDTO> articles = new ArrayList<>();
 		
 		try{
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_ARTICLES);
-			psmt.setInt(1, start);
+			if(search == null) {
+				psmt = conn.prepareStatement(SQL.SELECT_ARTICLES);
+				psmt.setInt(1, start);
+			} else {
+				psmt = conn.prepareStatement(SQL.SELECT_ARTICLES_FOR_SEARCH);
+				psmt.setString(1, "%"+search+"%");
+				psmt.setInt(2, start);
+			}
 			rs = psmt.executeQuery();
 			
 			while(rs.next()){
@@ -108,18 +130,24 @@ public class ArticleDAO extends DBHelper {
 		return articles;
 	}
 	
-	public void updateArticle(ArticleDTO dto) {
+	public int updateArticle(ArticleDTO dto) {
+		
+		int result = 0;
+		
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
 			psmt.setInt(3, dto.getNo());
-			psmt.executeUpdate();
-			close();
+			result = psmt.executeUpdate();
+
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return result;
+		
 	}
 	
 	public void deleteArticle(String no) {
@@ -136,13 +164,18 @@ public class ArticleDAO extends DBHelper {
 	}
 
 	// 추가 
-	public int selectCountTotal() {
+	public int selectCountTotal(String search) {
 		
 		int total = 0;
 		
 		try {
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_COUNT_TOTAL);
+			if(search == null) {
+				psmt = conn.prepareStatement(SQL.SELECT_COUNT_TOTAL);
+			}else {
+				psmt = conn.prepareStatement(SQL.SELECT_COUNT_TOTAL_FOR_SEARCH);
+				psmt.setString(1, "%"+search+"%");
+			}
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				total = rs.getInt(1);
@@ -191,7 +224,9 @@ public class ArticleDAO extends DBHelper {
 		return comments;
 	}
 	
-	public void insertComment(ArticleDTO dto) {
+	public int insertComment(ArticleDTO dto) {
+		
+		int result = 0;
 		
 		try {
 			conn = getConnection();
@@ -200,11 +235,14 @@ public class ArticleDAO extends DBHelper {
 			psmt.setString(2, dto.getContent());
 			psmt.setString(3, dto.getWriter());
 			psmt.setString(4, dto.getRegip());
-			psmt.executeUpdate();
+			result = psmt.executeUpdate();
 			close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return result;
+		
 	}
 	
 	public void updateArticleForCommentPlus(String no) {
@@ -217,6 +255,8 @@ public class ArticleDAO extends DBHelper {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+	
+		
 	}
 	
 	public void updateArticleForCommentMinus(String no) {
@@ -244,16 +284,22 @@ public class ArticleDAO extends DBHelper {
 		}
 	}
 	
-	public void deleteComment(String no) {
+	public int deleteComment(String no) {
+		
+		int result = 0;
+		
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.DELETE_COMMENT);
 			psmt.setString(1, no);
-			psmt.executeUpdate();
+			result = psmt.executeUpdate();
 			close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return result; 
+		
 	}
 
 

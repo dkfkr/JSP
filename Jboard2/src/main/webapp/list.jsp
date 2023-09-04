@@ -2,15 +2,14 @@
 <%@ include file="./_header.jsp" %>
 <main id="board">
     <section class="list">                
-        <form action="#">
-            <input type="text" name="search" placeholder="제목 키워드, 글쓴이 검색">
+        <form action="/Jboard2/list.do" method="get">
+            <input type="text" name="search" placeholder="제목 키워드 검색">
             <input type="submit" value="검색">
         </form>
         
         <table border="0">
             <caption>글목록</caption>
             <tr>
-                <th>번호</th>
                 <th>제목</th>
                 <th>글쓴이</th>
                 <th>날짜</th>
@@ -18,9 +17,8 @@
             </tr>
             <c:forEach var="user" items="${users}">              
                 <tr>
-                    <td>${user.no}</td>
-                    <td><a href="./view.do?no=${user.no}">${user.title}</a></td>
-                    <td>${user.writer}</td>
+                    <td><a href="./view.do?no=${user.no}">${user.title}</a>[${user.comment}]</td>
+                    <td>${user.nick}</td>
                     <td>${user.rdate}</td>
                     <td>${user.hit}</td>
                 </tr>

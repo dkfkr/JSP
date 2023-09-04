@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.Set"/>
-    <fullyQualifiedTypeName name="kr.co.jboard1.vo.ArticleVO"/>
-    <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
-    <fullyQualifiedTypeName name="kr.co.jboard1.dao.ArticleDAO"/>
-    <fullyQualifiedTypeName name="kr.co.jboard1.dto.ArticleDTO"/>
-    <fullyQualifiedTypeName name="javax.swing.text.AbstractDocument.Content"/>
-    <fullyQualifiedTypeName name="kr.co.Farmstory1.dto.UserDTO"/>
-    <fullyQualifiedTypeName name="kr.Farmstory1.dao.ArticleDAO"/>
-    <fullyQualifiedTypeName name="kr.Farmstory1.db.DBHelper"/>
     <fullyQualifiedTypeName name="kr.Farmstory1.db.SQL"/>
     <fullyQualifiedTypeName name="org.apache.tomcat.dbcp.dbcp2.PStmtKey"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
@@ -43,21 +34,30 @@
     <fullyQualifiedTypeName name="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"/>
     <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
     <fullyQualifiedTypeName name="java.util.UUID"/>
-    <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="com.oreilly.servlet.DaemonHttpServlet"/>
     <fullyQualifiedTypeName name="kr.co.jboard2.db.DBHelper"/>
-    <fullyQualifiedTypeName name="kr.co.jboard2.dao.FileDAO"/>
     <fullyQualifiedTypeName name="kr.co.jboard2.db.SQL"/>
-    <fullyQualifiedTypeName name="kr.co.jboard2.dto.FileDTO"/>
-    <fullyQualifiedTypeName name="kr.co.jboard2.service.FileService"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="kr.co.jboard2.dto.UserDTO"/>
-    <fullyQualifiedTypeName name="kr.co.jboard2.dto.ArticleDTO"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
-    <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
     <fullyQualifiedTypeName name="kr.co.jboard2.service.ArticleService"/>
+    <fullyQualifiedTypeName name="kr.co.jboard2.dao.FileDAO"/>
+    <fullyQualifiedTypeName name="javax.management.InstanceAlreadyExistsException"/>
+    <fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
+    <fullyQualifiedTypeName name="java.io.BufferedOutputStream"/>
+    <fullyQualifiedTypeName name="java.io.FileInputStream"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+    <fullyQualifiedTypeName name="kr.co.jboard2.dto.FileDTO"/>
+    <fullyQualifiedTypeName name="java.net.URLEncoder"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="kr.co.jboard2.dto.ArticleDTO"/>
+    <fullyQualifiedTypeName name="kr.co.jboard2.service.FileService"/>
+    <fullyQualifiedTypeName name="kr.co.farmstory2.db.DBHelper"/>
+    <fullyQualifiedTypeName name="kr.co.farmstory2.dto.UserDTO"/>
+    <fullyQualifiedTypeName name="kr.co.farmstory2.dao.UserDAO"/>
+    <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>

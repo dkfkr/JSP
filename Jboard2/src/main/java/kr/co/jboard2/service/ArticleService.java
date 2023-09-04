@@ -1,13 +1,17 @@
 package kr.co.jboard2.service;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +20,8 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.co.jboard2.dao.ArticleDAO;
-import kr.co.jboard2.db.SQL;
 import kr.co.jboard2.dto.ArticleDTO;
+import kr.co.jboard2.dto.FileDTO;
 
 public enum ArticleService {
 	
@@ -34,12 +38,12 @@ public enum ArticleService {
 		return dao.selectArticle(no);
 	}
 	
-	public List<ArticleDTO> selectArticles(int start) {
-		return dao.selectArticles(start);
+	public List<ArticleDTO> selectArticles(int start, String search) {
+		return dao.selectArticles(start, search);
 	}
 	
-	public void updateArticle(ArticleDTO dto) {
-		dao.updateArticle(dto);
+	public int updateArticle(ArticleDTO dto) {
+		return dao.updateArticle(dto);
 	}
 	
 	public void deleteArticle(String no) {
@@ -47,16 +51,16 @@ public enum ArticleService {
 	}
 
 	// 추가 
-	public int selectCountTotal() {
-		return dao.selectCountTotal();
+	public int selectCountTotal(String search) {
+		return dao.selectCountTotal(search);
 	}
 	
 	public List<ArticleDTO> selectComments(String parent) {
 		return dao.selectComments(parent);
 	}
 	
-	public void insertComment(ArticleDTO dto) {
-		dao.insertComment(dto);
+	public int insertComment(ArticleDTO dto) {
+		return dao.insertComment(dto);
 	}
 	
 	public void updateArticleForCommentPlus(String no) {
@@ -71,8 +75,8 @@ public enum ArticleService {
 		dao.updateComment(no, content);
 	}
 	
-	public void deleteComment(String no) {
-		dao.deleteComment(no);
+	public int deleteComment(String no) {
+		return dao.deleteComment(no);
 	}
 	
 	// 업로드 경로 구하기
@@ -128,10 +132,35 @@ public enum ArticleService {
 	}
 	
 	// 파일 다운로드
-	public void downloadFile() {
+	public void downloadFile(HttpServletRequest req, HttpServletResponse resp, FileDTO dto) throws IOException {
+		// response 파일 다운로드 헤더 수정
+		resp.setContentType("application/octet-stream");
+		resp.setHeader("Content-Disposition", "attachment; filename="+URLEncoder.encode(dto.getOriName(), "utf-8"));
+		resp.setHeader("Content-Transfer-Encoding", "binary");
+		resp.setHeader("Pragma", "no-cache");
+		resp.setHeader("Cache-Control", "private");
 		
+		// response 파일 스트림 작업
+		String path = getFilePath(req);
+		
+		File file = new File(path+"/"+dto.getNewName());
+		
+		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
+		BufferedOutputStream bos = new BufferedOutputStream(resp.getOutputStream());
+				
+		while(true){
+			
+			int data = bis.read();
+			if(data == -1){
+				break;
+			}
+			
+			bos.write(data);
+		}
+		
+		bos.close();
+		bis.close();
 	}
-	
 	// 페이지 마지막 번호
 	public int getLastPageNum(int total) {
 		

@@ -13,6 +13,9 @@ public class ArticleDTO {
 	private String regip;
 	private String rdate;
 	
+	// 파일관련 추가 필드
+	private FileDTO fileDto;
+	
 	// 추가필드
 	private String nick;
 	
@@ -105,5 +108,11 @@ public class ArticleDTO {
 	}
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
+	}
+	public FileDTO getFileDto() {
+		return fileDto;
+	}
+	public void setFileDto(FileDTO fileDto) {
+		this.fileDto = fileDto;
 	}
 }
