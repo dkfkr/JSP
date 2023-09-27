@@ -1,5 +1,6 @@
 package kr.co.farmstory2.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import kr.co.farmstory2.dao.UserDAO;
 import kr.co.farmstory2.db.DBHelper;
 import kr.co.farmstory2.db.SQL;
+import kr.co.farmstory2.dto.OrderDTO;
 import kr.co.farmstory2.dto.TermsDTO;
 import kr.co.farmstory2.dto.UserDTO;
 
@@ -41,6 +43,25 @@ public class UserDAO extends DBHelper {
 		}catch (Exception e) {
 			logger.error("insertUser error : " + e.getMessage());
 		}
+	}
+	
+	public int selectCountUsers() {
+		int total = 0;
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_COUNT_ORDERS);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return total;
 	}
 	
 	public int selectCountUid(String uid) {
@@ -301,8 +322,78 @@ public class UserDAO extends DBHelper {
 		return result2;
 	}
 	
-	public List<UserDTO> selectUsers() {
-		return null;
+	public List<UserDTO> selectUsers(int start) {
+		
+		List<UserDTO> users = new ArrayList<UserDTO>();
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_USERS);
+			psmt.setInt(1, start);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				UserDTO user = new UserDTO();
+				user.setUid(rs.getString(1));
+				user.setPass(rs.getString(2));
+				user.setName(rs.getString(3));
+				user.setNick(rs.getString(4));
+				user.setEmail(rs.getString(5));
+				user.setHp(rs.getString(6));
+				user.setRole(rs.getString(7));
+				user.setZip(rs.getString(8));
+				user.setAddr1(rs.getString(9));
+				user.setAddr2(rs.getString(10));
+				user.setRegip(rs.getString(11));
+				user.setRegDate(rs.getString(12));
+				user.setLeaveDate(rs.getString(13));
+				user.setGrade(rs.getString(14));
+				users.add(user);
+			}
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return users;
+	}
+	
+	public List<UserDTO> selectUserLatest(int start) {
+		
+		List<UserDTO> users = new ArrayList<UserDTO>();
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_USER_LATESTS);
+			psmt.setInt(1, start);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				UserDTO user = new UserDTO();
+				user.setUid(rs.getString(1));
+				user.setPass(rs.getString(2));
+				user.setName(rs.getString(3));
+				user.setNick(rs.getString(4));
+				user.setEmail(rs.getString(5));
+				user.setHp(rs.getString(6));
+				user.setRole(rs.getString(7));
+				user.setZip(rs.getString(8));
+				user.setAddr1(rs.getString(9));
+				user.setAddr2(rs.getString(10));
+				user.setRegip(rs.getString(11));
+				user.setRegDate(rs.getString(12));
+				user.setLeaveDate(rs.getString(13));
+				user.setGrade(rs.getString(14));
+				users.add(user);
+			}
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return users;
 	}
 	
 	public void updateUser(UserDTO dto) {

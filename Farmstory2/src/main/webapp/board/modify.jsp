@@ -1,21 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
+<jsp:include page="./aside${group}.jsp"/>
 <section class="modify">
 			    <h3>글수정</h3>
 			    <article>
-			        <form action="/Farmstory1/board/proc/modifyProc.jsp" method="post">
+			        <form action="/Farmstory2/board/modify.do" method="post" enctype="multipart/form-data">
 			        	<input type="hidden" name="group" value="${group}">
 			        	<input type="hidden" name="cate" value="${cate}">
-			        	<input type="hidden" name="no" value="${user.no}">
+			        	<input type="hidden" name="no" value="${view.no}">
 			            <table>
 			                <tr>
 			                    <td>제목</td>
-			                    <td><input type="text" name="title" value="${user.title}" placeholder="제목을 입력하세요."/></td>
+			                    <td><input type="text" name="title" value="${view.title}" placeholder="제목을 입력하세요."/></td>
 			                </tr>
 			                <tr>
 			                    <td>내용</td>
 			                    <td>
-			                        <textarea name="content">${user.content}</textarea>
+			                        <textarea name="content">${view.content}</textarea>
 			                    </td>
 			                </tr>
 			                <tr>

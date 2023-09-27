@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<property name="NAME" value="Jboard2"/>	
+	<property name="NAME" value="Farmstory2"/>	
 	<property name="LOG_DIR" value="/logs"/>
 	
 	<!-- 콘솔 어펜더 -->
@@ -44,8 +44,8 @@
 		</encoder>
 	</appender>
   
-	<root level="debug">
-		<appender-ref ref="STDOUT" />		
+	<root level="INFO">
+		<appender-ref ref="ROLLING_DAILY" />		
 	</root>
 	
 </configuration>

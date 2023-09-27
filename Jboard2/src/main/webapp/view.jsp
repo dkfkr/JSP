@@ -107,7 +107,6 @@
                 <th>제목</th>
                 <td><input type="text" name="title" value="${view.title}" readonly/></td>
             </tr>
-            <c:if test="${view.file > 0}">
             <tr>
                 <th>파일</th>
                 <td>
@@ -115,7 +114,6 @@
                 	<span>${view.fileDto.download}</span>회 다운로드
                 </td>
             </tr>
-            </c:if>
             <tr>
                 <th>내용</th>
                 <td>

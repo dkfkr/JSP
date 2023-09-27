@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="ctxPath" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,29 +12,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">    
-    <script>
-        $(function(){
-
-            $('.showPopup').click(function(e){
-                e.preventDefault();
-                $('#orderPopup').show();
-            });
-
-            $('#orderPopup .btnClose').click(function(){
-                $('#orderPopup').hide();
-            });
-
-        });
-    </script>
+    <script src="/Farmstory2/admin/js/popup.js"></script>
 </head>
 
 <body>
     <div id="container">
         <header>
-            <a href="./index.do" class="logo"><img src="./images/admin_logo.jpg" alt="로고"/></a>
+            <a href="${ctxPath}/index.do" class="logo"><img src="./images/admin_logo.jpg" alt="로고"/></a>
             <p>
-                <a href="#">HOME |</a>
-                <a href="#">로그아웃 |</a>
+                <a href="${ctxPath}/admin/index.do">HOME |</a>
+                <a href="${ctxPath}/user/logout.do">로그아웃 |</a>
                 <a href="#">고객센터</a>
             </p>
         </header>

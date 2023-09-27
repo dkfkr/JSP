@@ -1,32 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>팜스토리::장보기</title>
-    <link rel="stylesheet" href="../css/style.css"/>
-</head>
-<body>
-    <div id="container">
-        <header>
-            <a href="../index.html" class="logo"><img src="../images/logo.png" alt="로고"/></a>
-            <p>
-                <a href="#">HOME |</a>
-                <a href="#">로그인 |</a>
-                <a href="#">회원가입 |</a>
-                <a href="./user/logout.jsp">로그아웃 |</a>
-                <a href="#">고객센터</a>
-            </p>
-            <img src="../images/head_txt_img.png" alt="3만원 이상 무료배송"/>
-            
-            <ul class="gnb">
-                <li><a href="#">팜스토리소개</a></li>
-                <li><a href="#"><img src="../images/head_menu_badge.png" alt="30%"/>장바구니</a></li>
-                <li><a href="#">농작물이야기</a></li>
-                <li><a href="#">이벤트</a></li>
-                <li><a href="#">커뮤니티</a></li>
-            </ul>
-        </header>
+<%@ include file="../_header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
         <div id="sub">
             <div><img src="../images/sub_top_tit2.png" alt="MARKET"></div>
@@ -49,49 +23,97 @@
                     <!-- 내용 시작 -->
                     <h3>기본정보</h3>
                     <div class="basic">
-                        <img src="../images/market_item_thumb.jpg" alt="딸기 500g">
 
-                        <table border="0">                            
-                            <tr>
-                                <td>상품명</td>
-                                <td>딸기 500g</td>
-                            </tr>
-                            <tr>
-                                <td>상품코드</td>
-                                <td>01</td>
-                            </tr>
-                            <tr>
-                                <td>배송비</td>
-                                <td>
-                                    <span>5,000</span>원
-                                    <em>3만원 이상 무료배송</em>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>판매가격</td>
-                                <td>4,000원</td>
-                            </tr>
-                            <tr>
-                                <td>구매수량</td>
-                                <td>
-                                    <input type="number" name="count" min="1" value="1">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>합계</td>
-                                <td class="total">4,000원</td>
-                            </tr>
-
-                            <a href="./order.html" class="btnOrder">
-                                <img src="../images/market_btn_order.gif" alt="바로 구매하기"/>
-                            </a>
-
-                        </table>
+						<c:set var="productName" value="${market.pName}" />
+						<c:set var="productCode" value="${market.pNo}" />
+						<c:set var="delivery" value="${market.delivery}" />
+						<c:set var="price" value="${market.price}" />
+						
+						<img src="/Farmstory2/thumb/${market.thumb2}" alt="${productName}">
+						
+						<table border="0">                            
+						    <tr>
+						        <td>상품명</td>
+						        <td>${productName}</td>
+						    </tr>
+						    <tr>
+						        <td>상품코드</td>
+						        <td>${productCode}</td>
+						    </tr>
+						    <tr>
+						        <td>배송비</td>
+						        <td>
+						            <c:choose>
+						                <c:when test="${delivery > 0}">
+						                    <span>${delivery}원</span>
+						                    <em>3만원 이상 무료배송</em>
+						                </c:when>
+						                <c:otherwise>
+						                    <span>배송비 무료</span>
+						                </c:otherwise>
+						            </c:choose>
+						        </td>
+						    </tr>
+						    <tr>
+						        <td>판매가격</td>
+						        <td>${price}원</td>
+						    </tr>
+						    <tr>
+						        <td>구매수량</td>
+						        <td>
+						            <input type="number" name="count" min="1" value="1">
+						        </td>
+						    </tr>
+						    <tr>
+						        <td>합계</td>
+						        <td class="total">${price}원</td>
+						    </tr>
+						</table>
+						<form id="formOrder" action="/Farmstory2/market/order.do" method="post">
+	                	<input type="hidden" name="thumb2"   value="${market.thumb2}">
+	                	<input type="hidden" name="pName"    value="${productName}">
+	                	<input type="hidden" name="pNo"      value="${productCode}">
+	                	<input type="hidden" name="delivery" value="${delivery}">
+	                	<input type="hidden" name="price"    value="${price}">
+	                	<input type="hidden" name="count"    value="1">
+	                	<input type="hidden" name="total"    value="${price}">                
+	                	<input type="hidden" name="final"    value="${price + delivery}">                
+	                	</form>
+		                <a href="#" class="btnOrder">
+		                    <img src="../images/market_btn_order.gif" alt="바로 구매하기"/>
+		                </a>
+							<script>
+									
+									const price    = ${price};
+									const delivery = ${delivery};
+									
+									$(function(){
+										
+										$('input[name=count]').change(function(){
+											
+											let count = $(this).val();
+											let total = price * count;
+											let finalPrice = total + delivery; 
+											
+											$('input[name=count]').val(count);
+											$('input[name=total]').val(total);
+											$('input[name=final]').val(finalPrice);
+											
+											$('.total').text(total.toLocaleString()+'원');
+										});
+										
+										// 주문하기
+										$('.btnOrder').click(function(e){
+											e.preventDefault();
+											$('#formOrder').submit();
+										});
+										
+									});
+							</script>
                     </div>
                     <h3>상품설명</h3>
                     <div class="detail">
-                        <img src="../images/market_detail_sample.jpg" alt="">
-
+                        <img src="/Farmstory2/thumb/${market.thumb3}" alt="상세 이미지">
                     </div>
 
                     <h3>배송정보</h3>
@@ -128,20 +150,6 @@
                     </div>
                     <!-- 내용 끝 -->
                 </article>
-            </section>
-
+  
         </div>
-        
-        
-        <footer>
-            <img src="../images/footer_logo.png" alt="로고"/>
-            <p>
-                (주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-팜스토리구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br />
-                등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동<br />
-                대표 : 홍길동 / 이메일 : email@mail.mail / 전화 : 01) 234-5678 / 경기도 성남시 잘한다구 신난다동 345<br />
-                <em>Copyright(C)홍길동 All rights reserved.</em>
-            </p>
-        </footer>
-    </div>    
-</body>
-</html>
+<%@ include file="../_footer.jsp" %>

@@ -56,23 +56,20 @@ private Logger logger = LoggerFactory.getLogger(this.getClass());
 	}
 	
 	public void updateFile(FileDTO dto) {
-		
-		try {
-			conn = getConnection();
-			
-			psmt = conn.prepareStatement(SQL.INSERT_FILE);
+	    try {
+	        conn = getConnection();
+	        psmt = conn.prepareStatement(SQL.DELETE_FILE);
 			psmt.setInt(1, dto.getAno());
-			psmt.setString(2, dto.getOriName());
-			psmt.setString(3, dto.getNewName());
+        	psmt = conn.prepareStatement(SQL.UPDATE_FILE);
+        	psmt.setInt(1, dto.getAno());
+	        psmt.setString(2, dto.getOriName());
+	        psmt.setString(3, dto.getNewName());
+	        psmt.executeUpdate();	               
+	    } catch (SQLException e) {
 
-			
-			
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
-		
-	}
+	        e.printStackTrace();
+	    }     
+	}	
 	
 	public int deleteFile(String ano) {
 		

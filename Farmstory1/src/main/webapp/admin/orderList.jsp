@@ -119,9 +119,9 @@
 	                    <td class="date"><%= order.getOrderDate() %></td>
 	                    <td><a href="#" class="showPopup">[상세확인]</a></td>
 	                    <td class="hidden orderProduct"><%= order.getOrderProduct() %></td>
-	                    <td class="hidden thumb1"><%= order.getThumb1() %></td>
-	                    <td class="hidden receiver"><%= order.getReceiver() %></td>
-	                    <td class="hidden address"><%= order.getAddr1()+" "+order.getAddr2() %></td>
+	                    <td class="hidden thumb1" style="display: none"><%= order.getThumb1() %></td>
+	                    <td class="hidden receiver" style="display: none"><%= order.getReceiver() %></td>
+	                    <td class="hidden address" style="display: none"><%= order.getAddr1()+" "+order.getAddr2() %></td>
 	                </tr>
 	                
 	                <% } %>

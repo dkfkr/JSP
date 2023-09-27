@@ -1,34 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>팜스토리::장보기</title>
-    <link rel="stylesheet" href="../css/style.css"/>
-</head>
-<body>
-    <div id="container">
-        <header>
-            <a href="/Farmstory2/index.do" class="logo"><img src="/Farmstory2/images/logo.png" alt="로고"/></a>
-            <p>
-                <a href="/Farmstory2/index.do">HOME |</a>
-                <a href="/Farmstory2/user/login.do">로그인 |</a>
-                <a href="/Farmstory2/user/terms.do">회원가입 |</a>
-                <a href="/Farmstory2/user/logout.do">로그아웃 |</a>
-                <a href="#">고객센터</a>
-            </p>
-            <img src="/Farmstory2/images/head_txt_img.png" alt="3만원 이상 무료배송"/>
-            
-            <ul class="gnb">
-                <li><a href="#">팜스토리소개</a></li>
-                <li><a href="#"><img src="/Farmstory2/images/head_menu_badge.png" alt="30%"/>장바구니</a></li>
-                <li><a href="#">농작물이야기</a></li>
-                <li><a href="#">이벤트</a></li>
-                <li><a href="#">커뮤니티</a></li>
-            </ul>
-        </header>
-
-        <div id="sub">
+<%@ include file="../_header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+       <div id="sub">
             <div><img src="/Farmstory2/images/sub_top_tit2.png" alt="MARKET"></div>
             <section class="market">
                 <aside>
@@ -47,106 +21,63 @@
                     </nav>
 
                     <!-- 내용 시작 -->
-                    <p class="sort">
-                        <a href="#" class="on">전체(10) |</a>
-                        <a href="#">과일 |</a>
-                        <a href="#">야채 |</a>
-                        <a href="#">곡류</a>
-                    </p>
-                    <table border="0">
-                        <tr>
-                            <td>
-                                <a href="/Farmstory2/market/view.do"><img src="/Farmstory2/images/market_item1.jpg" alt="사과 500g"></a>
-                            </td>
-                            <td>과일</td>
-                            <td><a href="#">사과 500g</a></td>
-                            <td><strong>4,000</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="./view.html"><img src="/Farmstory2/images/market_item2.jpg" alt="배 5kg"></a>
-                            </td>
-                            <td>과일</td>
-                            <td><a href="#">배 5kg</a></td>
-                            <td><strong>30,000</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="./view.html"><img src="../images/market_item3.jpg" alt="방울토마토"></a>
-                            </td>
-                            <td>야채</td>
-                            <td><a href="#">방울토마토</a></td>
-                            <td><strong>5,000</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="./view.html"><img src="../images/market_item4.jpg" alt="딸기 500g"></a>
-                            </td>
-                            <td>과일</td>
-                            <td><a href="#">딸기 500g</a></td>
-                            <td><strong>4,000</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="./view.html"><img src="../images/market_item5.jpg" alt="ㅊ"></a>
-                            </td>
-                            <td>과일</td>
-                            <td><a href="#">오렌지</a></td>
-                            <td><strong>8,000</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="./view.html"><img src="../images/market_item6.jpg" alt="무농약현미"></a>
-                            </td>
-                            <td>곡류</td>
-                            <td><a href="#">무농약현미</a></td>
-                            <td><strong>39,000</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="./view.html"><img src="../images/market_item7.jpg" alt="팜스토리 하루야채 샐러드"></a>
-                            </td>
-                            <td>야채</td>
-                            <td><a href="#">팜스토리 하루야채 샐러드</a></td>
-                            <td><strong>9,900</strong>원</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="./view.html"><img src="../images/market_item8.jpg" alt="바나나"></a>
-                            </td>
-                            <td>과일</td>
-                            <td><a href="#">바나나</a></td>
-                            <td><strong>3,000</strong>원</td>
-                        </tr>
-                    </table>
+
+					<c:set var="type0Class" value="${type eq '0' ? 'on' : ''}" />
+					<c:set var="type1Class" value="${type eq '1' ? 'on' : ''}" />
+					<c:set var="type2Class" value="${type eq '2' ? 'on' : ''}" />
+					<c:set var="type3Class" value="${type eq '3' ? 'on' : ''}" />
+					
+					<p class="sort">
+						<a href="/Farmstory2/market/list.do?type=0" class="${type0Class}">전체(${type eq '0' ? total : ''}) |</a>
+						<a href="/Farmstory2/market/list.do?type=1" class="${type1Class}">과일(${type eq '1' ? total : ''}) |</a>
+						<a href="/Farmstory2/market/list.do?type=2" class="${type2Class}">야채(${type eq '2' ? total : ''}) |</a>
+						<a href="/Farmstory2/market/list.do?type=3" class="${type3Class}">곡류(${type eq '3' ? total : ''})</a>
+					</p>
+					
+					<table border="0">
+					    <c:forEach items="${products}" var="product">
+					        <tr>
+					            <td>
+					                <a href="/Farmstory2/market/view.do?pNo=${product.pNo}">
+					                    <img src="/Farmstory2/thumb/${product.thumb1}" class="thumb" alt="사과 500g">
+					                </a>
+					            </td>
+					            <td>
+					                <c:choose>
+					                    <c:when test="${product.type eq 1}">과일</c:when>
+					                    <c:when test="${product.type eq 2}">야채</c:when>
+					                    <c:when test="${product.type eq 3}">곡물</c:when>
+					                </c:choose>
+					            </td>
+					            <td>
+					                <a href="/Farmstory2/market/view.do?type=${type}&pNo=${product.pNo}">
+					                    ${product.pName}
+					                </a>
+					            </td>
+					            <td>
+					                <strong>
+					                     <fmt:formatNumber value="${product.price}" type="number" pattern="#,##0원" />
+					                </strong>
+					            </td>
+					        </tr>
+					    </c:forEach>
+					</table>
 
                     <p class="paging">
-                        <a href="#"><</a>
-                        <a href="#" class="on">[1]</a>
-                        <a href="#">[2]</a>
-                        <a href="#">[3]</a>
-                        <a href="#">[4]</a>
-                        <a href="#">[5]</a>
-                        <a href="#">></a>
+                    <c:if test="${pageGroupStart > 1}">
+                        <a href="/Farmstory2/market/list.do?type=${type}&pg=${pageGroupStart - 1}">이전</a>
+                    </c:if>
+                    <c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}">   
+                        <a href="/Farmstory2/market/list.do?type=${type}&pg=${i}" class="num ${currentPage == i ? 'current':''}">[${i}]</a>
+                    </c:forEach>   
+                    <c:if test="${pageGroupEnd < lastPageNum}"> 
+                        <a href="/Farmstory2/market/list.do?type=${type}&pg=${pageGroupEnd + 1}">다음</a>
+                    </c:if>
                     </p>
 
                     <!-- 내용 끝 -->
 
                 </article>
             </section>
-
         </div>
-        
-        
-        <footer>
-            <img src="/Farmstory2/images/footer_logo.png" alt="로고"/>
-            <p>
-                (주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-팜스토리구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br />
-                등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동<br />
-                대표 : 홍길동 / 이메일 : email@mail.mail / 전화 : 01) 234-5678 / 경기도 성남시 잘한다구 신난다동 345<br />
-                <em>Copyright(C)홍길동 All rights reserved.</em>
-            </p>
-        </footer>
-    </div>    
-</body>
-</html>
+<%@ include file="../_footer.jsp" %>

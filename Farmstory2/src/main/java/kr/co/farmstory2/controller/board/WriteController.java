@@ -33,31 +33,42 @@ public class WriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("write.jsp");
+		String group = req.getParameter("group");
+		String cate = req.getParameter("cate");	
+		
+		req.setAttribute("group", group);
+		req.setAttribute("cate", cate);
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/write.jsp");
 		dispatcher.forward(req, resp);
 		
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			
+		
 		MultipartRequest mr = aService.uploadFile(req);
 		
 		// 폼 데이터 수신
+		String group = mr.getParameter("group");
+		String cate = mr.getParameter("cate");
 		String title = mr.getParameter("title");
 		String content = mr.getParameter("content");
 		String writer = mr.getParameter("writer");
 		String oName = mr.getOriginalFileName("file");
 		String regip = req.getRemoteAddr();
 		
-		logger.debug("1 : " + title);
-		logger.debug("2 : " + content);
-		logger.debug("3 : " + writer);
-		logger.debug("4 : " + oName);
-		logger.debug("5 : " + regip);
+		logger.debug("1 : " + cate);
+		logger.debug("2 : " + group);
+		logger.debug("3 : " + title);
+		logger.debug("3 : " + content);
+		logger.debug("4 : " + writer);
+		logger.debug("5 : " + oName);
+		logger.debug("6 : " + regip);
 		
 		// DTO 생성
 		ArticleDTO adto = new ArticleDTO();
+		adto.setCate(cate);
 		adto.setTitle(title);
 		adto.setContent(content);
 		adto.setFile(oName);
@@ -84,6 +95,6 @@ public class WriteController extends HttpServlet {
 		}
 		
 		//리다이렉트
-		resp.sendRedirect("/Farmstory2/list.do");
+		resp.sendRedirect("/Farmstory2/board/list.do?group=" + group + "&cate=" + cate);
 	}
 }

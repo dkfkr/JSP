@@ -27,29 +27,17 @@
     <Manager pathname="" />
     -->
     
-    <Resource
-		name="jdbc/Jboard"
-		auth="Container"
-		type="javax.sql.DataSource"
-		driverClassName="com.mysql.cj.jdbc.Driver"
-		url="jdbc:mysql://52.78.233.211 :3306/Jboard"
-		username="jboard"
-		password="qWer2179!@"
-		maxTotal="13"
-		maxIdle="13"
-		maxWaitMillis="3000"
-		/>
-		
-	<Resource
-		name="jdbc/Farmstory"
-		auth="Container"
-		type="javax.sql.DataSource"
-		driverClassName="com.mysql.cj.jdbc.Driver"
-		url="jdbc:mysql://52.78.233.211 :3306/Farmstory"
-		username="farmstory"
-		password="qWer2179!@"
-		maxTotal="13"
-		maxIdle="13"
-		maxWaitMillis="3000"
-		/>
+    <Resource 
+        name="jdbc/Kmarket"
+        auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="com.mysql.cj.jdbc.Driver"
+        url="jdbc:mysql://3.39.191.39/Kmarket"
+        username="Kmarket03"
+        password="Kmarket0927!!"
+        maxTotal="13"
+        maxIdle="13"
+        maxWaitMillis="3000"
+        />
+    
 </Context>

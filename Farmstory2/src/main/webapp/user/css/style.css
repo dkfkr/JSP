@@ -217,6 +217,7 @@
 }
 .list > .btnWrite {
     position: absolute;
-    bottom: 14px;
+    bottom: 0px;
     right: 0;
 }
+
